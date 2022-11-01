@@ -1,16 +1,9 @@
 # platjoc
 
-A new Flutter project.
+Juego de plataformas bastante sencillo.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+Coge todas las monedas (amarillas) para poder pasar al siguiente nivel (por el círculo blanco), sin que te mate el enemigo (círculo rojo). Tienes 3 vidas. WIP.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+SE ADJUNTA ARCHIVO DE EXCEL PARA PODER CREAR NUEVOS NIVELES.
