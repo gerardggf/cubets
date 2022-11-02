@@ -13,12 +13,14 @@ class Moneda extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
         padding: const EdgeInsets.all(kPadding + 10),
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(30),
-          child: Container(
-            color: vColor,
-            child: Center(child: vChild),
-          ),
+        child: Container(
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(30),
+              color: vColor,
+              boxShadow: const [
+                BoxShadow(color: Colors.white, blurRadius: 5, spreadRadius: 1)
+              ]),
+          child: Center(child: vChild),
         ));
   }
 }

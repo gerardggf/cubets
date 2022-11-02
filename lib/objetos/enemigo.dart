@@ -13,12 +13,14 @@ class Enemigo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
         padding: const EdgeInsets.all(kPadding),
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(15),
-          child: Container(
-            color: vColor,
-            child: const Center(child: Text("-_-")),
-          ),
+        child: Container(
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              color: vColor,
+              boxShadow: const [
+                BoxShadow(color: Colors.grey, blurRadius: 1, spreadRadius: 1)
+              ]),
+          child: const Center(child: Text("ò_ó")),
         ));
   }
 }

@@ -13,12 +13,14 @@ class Jugador extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
         padding: const EdgeInsets.all(kPadding),
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(15),
-          child: Container(
-            color: vColor,
-            child: const Center(child: Text("o_o")),
-          ),
+        child: Container(
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(13),
+              color: vColor,
+              boxShadow: const [
+                BoxShadow(color: Colors.brown, blurRadius: 1, spreadRadius: 1)
+              ]),
+          child: const Center(child: Text("0_0")),
         ));
   }
 }

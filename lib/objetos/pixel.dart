@@ -13,8 +13,11 @@ class Pixel extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(1.0),
       child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(5),
+          color: vColor,
+        ),
         padding: const EdgeInsets.all(1.0),
-        color: vColor,
         child: Center(child: vChild),
       ),
     );
