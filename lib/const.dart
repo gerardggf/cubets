@@ -10,6 +10,6 @@ const kVidas = 5;
 const kPadding = 1.0;
 const kPaddingText = 20.0;
 const kBackgroundColor = Colors.black;
-const kBtnSize = 50.00;
+const kBtnSize = 60.00;
 
 const kFSize = 18.00;

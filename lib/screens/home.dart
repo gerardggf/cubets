@@ -262,8 +262,11 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       backgroundColor: kBackgroundColor,
       body: Column(children: [
-        Expanded(
-          flex: 7,
+        //tamaño zona de juego
+        SizedBox(
+          width: MediaQuery.of(context).size.width,
+          //altura+ diferencia pixeles por arriba
+          height: (MediaQuery.of(context).size.width / 10 * 13) + 50,
           child: GestureDetector(
             onTapDown: (details) {
               if (isJuegoStart == false) {
@@ -354,184 +357,202 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
         Expanded(
-            flex: 2,
-            child: Row(
-              children: [
-                Flexible(
-                  flex: 3,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      ElevatedButton(
-                        onPressed: () {
-                          startJuego(0);
-                        },
-                        child: const Icon(
-                          Icons.arrow_drop_up,
-                          size: kBtnSize,
+            child: Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            Flexible(
+              flex: 5,
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Flexible(
+                      flex: 1,
+                      child: SizedBox(
+                        width: 20,
+                      )),
+                  Flexible(
+                    flex: 8,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        ElevatedButton(
+                          onPressed: () {
+                            startJuego(0);
+                          },
+                          child: const Icon(
+                            Icons.arrow_drop_up,
+                            size: kBtnSize,
+                          ),
                         ),
+                        const SizedBox(
+                          height: 5,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            ElevatedButton(
+                              onPressed: () {
+                                startJuego(1);
+                              },
+                              child: const Icon(
+                                Icons.arrow_left,
+                                size: kBtnSize,
+                              ),
+                            ),
+                            const SizedBox(
+                              width: 100,
+                            ),
+                            ElevatedButton(
+                              onPressed: () {
+                                startJuego(2);
+                              },
+                              child: const Icon(
+                                Icons.arrow_right,
+                                size: kBtnSize,
+                              ),
+                            )
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 5,
+                        ),
+                        ElevatedButton(
+                          onPressed: () {
+                            startJuego(3);
+                          },
+                          child: const Icon(
+                            Icons.arrow_drop_down,
+                            size: kBtnSize,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Flexible(
+                      flex: 1,
+                      child: Align(
+                          alignment: Alignment.topRight,
+                          child: Column(
+                            children: [
+                              const SizedBox(height: kFSize * 2),
+                              IconButton(
+                                icon: const Icon(
+                                  Icons.menu,
+                                  color: Colors.white,
+                                  size: kFSize + 10,
+                                ),
+                                onPressed: () {
+                                  getNivel();
+                                  setNivel();
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              const SeleccionarNivel()));
+                                },
+                              ),
+                              PopupMenuButton(
+                                icon: const Icon(
+                                  Icons.more_horiz_rounded,
+                                  color: Colors.white,
+                                ),
+                                onSelected: (valor) {
+                                  if (valor == 0) {
+                                    setState(() {
+                                      nivelLActual = 1;
+                                      uNivel = 1;
+                                    });
+                                    monedasR = 0;
+                                    setNivel();
+                                    load();
+                                  } else if (valor == 1) {
+                                    load();
+                                    monedasR = 0;
+                                    //antimonedas lo que hace es almacenar las monedas recolectadas, para volverlas a colocar al reaparecer por muerte
+                                    for (var element in antiMonedas) {
+                                      nivel.monedas.add(element);
+                                    }
+                                  }
+                                },
+                                itemBuilder: (context) => [
+                                  const PopupMenuItem(
+                                    value: 0,
+                                    child: Text("Reiniciar todos los niveles"),
+                                  ),
+                                  const PopupMenuItem(
+                                    value: 1,
+                                    child: Text("Reiniciar este nivel"),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ))),
+                ],
+              ),
+            ),
+            Flexible(
+              flex: 1,
+              child: Container(
+                  color: Colors.blue,
+                  alignment: Alignment.center,
+                  padding: const EdgeInsets.all(kPaddingText / 2),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "Nivel $nivelLActual",
+                        style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                            fontSize: kFSize - 2),
                       ),
                       const SizedBox(
-                        height: 5,
+                        width: 20,
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          ElevatedButton(
-                            onPressed: () {
-                              startJuego(1);
-                            },
-                            child: const Icon(
-                              Icons.arrow_left,
-                              size: kBtnSize,
-                            ),
-                          ),
-                          const SizedBox(
-                            width: 90,
-                          ),
-                          ElevatedButton(
-                            onPressed: () {
-                              startJuego(2);
-                            },
-                            child: const Icon(
-                              Icons.arrow_right,
-                              size: kBtnSize,
-                            ),
-                          )
+                      const Icon(
+                        Icons.circle,
+                        color: Colors.yellow,
+                        size: kFSize - 1,
+                        shadows: [
+                          BoxShadow(
+                              color: Colors.white,
+                              blurRadius: 10,
+                              spreadRadius: 3)
                         ],
                       ),
                       const SizedBox(
-                        height: 5,
+                        width: 4,
                       ),
-                      ElevatedButton(
-                        onPressed: () {
-                          startJuego(3);
-                        },
-                        child: const Icon(
-                          Icons.arrow_drop_down,
-                          size: kBtnSize,
-                        ),
+                      Text(
+                        "Monedas: ${monedasR.toString()}",
+                        style: const TextStyle(
+                            color: Colors.white, fontSize: kFSize - 2),
+                      ),
+                      const SizedBox(
+                        width: 20,
+                      ),
+                      Image.asset(
+                        "assets/img/icono_vidas.png",
+                        width: kFSize,
+                        height: kFSize,
+                      ),
+                      const SizedBox(
+                        width: 3,
+                      ),
+                      Text(
+                        "Vidas: ${vidas.toString()}",
+                        style: const TextStyle(
+                            color: Colors.white, fontSize: kFSize - 2),
                       ),
                     ],
-                  ),
-                ),
-                Flexible(
-                    flex: 1,
-                    child: Align(
-                        alignment: Alignment.topRight,
-                        child: Column(
-                          children: [
-                            const SizedBox(height: kFSize * 2),
-                            IconButton(
-                              icon: const Icon(
-                                Icons.menu,
-                                color: Colors.white,
-                                size: kFSize + 10,
-                              ),
-                              onPressed: () {
-                                getNivel();
-                                setNivel();
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            const SeleccionarNivel()));
-                              },
-                            ),
-                            PopupMenuButton(
-                              icon: const Icon(
-                                Icons.more_horiz_rounded,
-                                color: Colors.white,
-                              ),
-                              onSelected: (valor) {
-                                if (valor == 0) {
-                                  setState(() {
-                                    nivelLActual = 1;
-                                    uNivel = 1;
-                                  });
-                                  monedasR = 0;
-                                  setNivel();
-                                  load();
-                                } else if (valor == 1) {
-                                  load();
-                                  monedasR = 0;
-                                  //antimonedas lo que hace es almacenar las monedas recolectadas, para volverlas a colocar al reaparecer por muerte
-                                  for (var element in antiMonedas) {
-                                    nivel.monedas.add(element);
-                                  }
-                                }
-                              },
-                              itemBuilder: (context) => [
-                                const PopupMenuItem(
-                                  value: 0,
-                                  child: Text("Reiniciar todos los niveles"),
-                                ),
-                                const PopupMenuItem(
-                                  value: 1,
-                                  child: Text("Reiniciar este nivel"),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ))),
-              ],
-            )),
-        Expanded(
-          flex: 1,
-          child: Container(
-              alignment: Alignment.topLeft,
-              padding: const EdgeInsets.all(kPaddingText),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    "Nivel $nivelLActual",
-                    style: const TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                        fontSize: kFSize - 2),
-                  ),
-                  const SizedBox(
-                    width: 20,
-                  ),
-                  const Icon(
-                    Icons.circle,
-                    color: Colors.yellow,
-                    size: kFSize - 1,
-                    shadows: [
-                      BoxShadow(
-                          color: Colors.white, blurRadius: 10, spreadRadius: 3)
-                    ],
-                  ),
-                  const SizedBox(
-                    width: 4,
-                  ),
-                  Text(
-                    "Monedas: ${monedasR.toString()}",
-                    style: const TextStyle(
-                        color: Colors.white, fontSize: kFSize - 2),
-                  ),
-                  const SizedBox(
-                    width: 20,
-                  ),
-                  Image.asset(
-                    "assets/img/icono_vidas.png",
-                    width: kFSize,
-                    height: kFSize,
-                  ),
-                  const SizedBox(
-                    width: 3,
-                  ),
-                  Text(
-                    "Vidas: ${vidas.toString()}",
-                    style: const TextStyle(
-                        color: Colors.white, fontSize: kFSize - 2),
-                  ),
-                ],
-              )),
-        )
+                  )),
+            )
+          ],
+        )),
       ]),
     );
   }
