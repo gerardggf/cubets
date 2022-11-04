@@ -5,8 +5,11 @@ import 'package:platjoc/objetos/enemigo.dart';
 import 'package:platjoc/objetos/jugador.dart';
 import 'package:platjoc/objetos/meta.dart';
 import 'package:platjoc/objetos/moneda.dart';
+import 'package:platjoc/screens/seleccionarnivel.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../const.dart';
+import '../models.dart';
 import '../niveles.dart';
 import '../objetos/pixel.dart';
 
@@ -17,39 +20,51 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
+bool isJuegoStart = false;
+int? uNivel = 1;
+//======================================================================
+var nivelLActual = 1;
+//======================================================================
+
+void getNivel() async {
+  final prefs = await SharedPreferences.getInstance();
+  uNivel = prefs.getInt('uNivel') ?? 1;
+}
+
+void setNivel() async {
+  final prefs = await SharedPreferences.getInstance();
+  if (uNivel! <= nivelLActual + 1) {
+    await prefs.setInt('uNivel', nivelLActual);
+  }
+}
+
 class _HomeScreenState extends State<HomeScreen> {
   int numPixeles = numFilas * numColumnas;
   int jugador = 130;
   int monedasR = 0;
   int posEnemigo = 130;
-  bool isJuegoStart = false;
-  List<List<int>> nivelA = [
-    [130],
-    [130],
-    [130],
-    [130]
-  ];
 
+  String direccioMov = "";
   var cont = 0;
-  var vidas = 3;
+  var vidas = kVidas;
 
-  //======================================================================
-  var nivelLActual = 1;
-  //======================================================================
+  var antiMonedas = [];
+
+  var nivel = Niveles.fromJson(nivelA);
 
   void initJuego() {
+    //movimiento enemigo
     Timer.periodic(const Duration(milliseconds: 240), (timer) {
       setState(() {
-        posEnemigo = nivelA[2][cont];
+        posEnemigo = nivel.enemigo[cont];
       });
       cont++;
-      if (cont >= nivelA[2].length) {
+      if (cont >= nivel.enemigo.length) {
         cont = 0;
       }
 
       derrotado();
-
-      //condicional global por si para el juego, parar el enemigo y timer
+      //se matan al jugador se para el juego y el enemigo
       if (isJuegoStart == false) {
         timer.cancel();
       }
@@ -60,75 +75,77 @@ class _HomeScreenState extends State<HomeScreen> {
     switch (nivelLActual) {
       case 1:
         {
-          nivelA = nivelL1;
+          nivelA = nivelN1;
           break;
         }
       case 2:
         {
-          nivelA = nivelL2;
+          nivelA = nivelN2;
           break;
         }
       case 3:
         {
-          nivelA = nivelL3;
+          nivelA = nivelN3;
           break;
         }
       case 4:
         {
-          nivelA = nivelL4;
+          nivelA = nivelN4;
           break;
         }
       case 5:
         {
-          nivelA = nivelL5;
+          nivelA = nivelN5;
           break;
         }
       case 6:
         {
-          nivelA = nivelL6;
+          nivelA = nivelN6;
           break;
         }
       case 7:
         {
-          nivelA = nivelL7;
+          nivelA = nivelN7;
           break;
         }
       case 8:
         {
-          nivelA = nivelL8;
+          nivelA = nivelN8;
           break;
         }
       case 9:
         {
-          nivelA = nivelL9;
+          nivelA = nivelN9;
           break;
         }
       case 10:
         {
-          nivelA = nivelL10;
+          nivelA = nivelN10;
           break;
         }
       case 11:
         {
-          nivelA = nivelL11;
+          nivelA = nivelN11;
           break;
         }
       case 12:
         {
-          nivelA = nivelL12;
+          nivelA = nivelN12;
           break;
         }
       case 13:
         {
-          nivelA = nivelL13;
+          nivelA = nivelN13;
           break;
         }
       case 14:
         {
-          nivelA = nivelL14;
+          nivelA = nivelN14;
           break;
         }
     }
+    nivel = Niveles.fromJson(nivelA);
+
     setState(() {
       nivelA;
       jugador = jugadorPosOrigen;
@@ -145,65 +162,41 @@ class _HomeScreenState extends State<HomeScreen> {
     }
 
     switch (vPos) {
+      //arriba
       case 0:
         {
-          if (nivelA[1].contains(jugador - numFilas)) {
-            monedasR++;
-            nivelA[1].remove(jugador - numFilas);
-          }
-          if (!nivelA[0].contains(jugador - numFilas)) {
-            setState(() {
-              jugador = jugador - numFilas;
-            });
-          }
+          accionxPos(jugador - numFilas);
         }
         break;
+      //izquierda
       case 1:
         {
-          if (nivelA[1].contains(jugador - 1)) {
-            monedasR++;
-            nivelA[1].remove(jugador - 1);
-          }
-          if (!nivelA[0].contains(jugador - 1)) {
-            setState(() {
-              jugador--;
-            });
-          }
+          accionxPos(jugador - 1);
         }
         break;
+      //derecha
       case 2:
         {
-          if (nivelA[1].contains(jugador + 1)) {
-            monedasR++;
-            nivelA[1].remove(jugador + 1);
-          }
-          if (!nivelA[0].contains(jugador + 1)) {
-            setState(() {
-              jugador++;
-            });
-          }
+          accionxPos(jugador + 1);
         }
         break;
+      //abajo
       case 3:
-        if (nivelA[1].contains(jugador + numFilas)) {
-          monedasR++;
-          nivelA[1].remove(jugador + numFilas);
+        {
+          accionxPos(jugador + numFilas);
         }
-        if (!nivelA[0].contains(jugador + numFilas)) {
-          setState(() {
-            jugador = jugador + numFilas;
-          });
-        }
-        break;
     }
+    print("antimonedas: $antiMonedas");
+    print("nivel monedas: ${nivel.monedas})");
 
     derrotado();
 
-    if (jugador == nivelA[3][0]) {
+    if (jugador == nivel.meta) {
       meta();
     }
   }
 
+  //cuando el enemigo mata al jugador
   void derrotado() {
     if (jugador == posEnemigo) {
       isJuegoStart = false;
@@ -211,22 +204,58 @@ class _HomeScreenState extends State<HomeScreen> {
       load();
       if (vidas == 0) {
         isJuegoStart == false;
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => const HomeScreen()),
-        );
+        setState(() {
+          nivelLActual = 1;
+          uNivel = 1;
+          vidas = kVidas;
+        });
+        setNivel();
+        load();
       }
+
+      //antimonedas lo que hace es almacenar las monedas recolectadas, para volverlas a colocar al reaparecer por muerte
+      for (var element in antiMonedas) {
+        nivel.monedas.add(element);
+      }
+      setState(() {
+        antiMonedas.clear();
+        monedasR = 0;
+      });
     }
   }
 
   void meta() {
     if (monedasR == 4) {
-      nivelLActual++;
+      for (var element in antiMonedas) {
+        nivel.monedas.add(element);
+      }
+      antiMonedas.clear();
 
+      nivelLActual++;
+      //cargar siguiente nivel
       load();
+      //resetear monedas
       monedasR = 0;
+      getNivel();
+      setNivel();
     }
   }
+
+  //acciones que se van a realizar para cada movimiento
+  void accionxPos(aPos) {
+    if (nivel.monedas.contains(aPos)) {
+      monedasR++;
+      antiMonedas.add(aPos);
+      nivel.monedas.remove(aPos);
+    }
+    if (!nivel.barreras.contains(aPos)) {
+      setState(() {
+        jugador = aPos;
+      });
+    }
+  }
+
+  //==============================================================================================================================
 
   @override
   Widget build(BuildContext context) {
@@ -234,128 +263,219 @@ class _HomeScreenState extends State<HomeScreen> {
       backgroundColor: kBackgroundColor,
       body: Column(children: [
         Expanded(
-          flex: 10,
-          child: GridView.builder(
-            physics: const NeverScrollableScrollPhysics(),
-            itemCount: numPixeles,
-            itemBuilder: (BuildContext context, int index) {
-              //==============================================
-              //==============================================
+          flex: 7,
+          child: GestureDetector(
+            onTapDown: (details) {
+              if (isJuegoStart == false) {
+                load();
+                initJuego();
 
-              //var indexString = index.toString();
-              var indexString = "";
+                isJuegoStart = true;
+              }
+              var altura = 585 - 50;
+              //arriba
+              if (1.3 * details.globalPosition.dx + 50 >
+                      details.globalPosition.dy &&
+                  -1.3 * details.globalPosition.dx + altura >
+                      details.globalPosition.dy) {
+                accionxPos(jugador - numFilas);
+              } //abajo
+              else if (1.3 * details.globalPosition.dx + 50 <
+                      details.globalPosition.dy &&
+                  -1.3 * details.globalPosition.dx + altura <
+                      details.globalPosition.dy) {
+                accionxPos(jugador + numFilas);
+              } //derecha
+              else if (1.3 * details.globalPosition.dx + 50 >
+                      details.globalPosition.dy &&
+                  -1.3 * details.globalPosition.dx + altura <
+                      details.globalPosition.dy) {
+                accionxPos(jugador + 1);
+              } //izquierda
+              else if (1.3 * details.globalPosition.dx + 50 <
+                      details.globalPosition.dy &&
+                  -1.3 * details.globalPosition.dx + altura >
+                      details.globalPosition.dy) {
+                accionxPos(jugador - 1);
+              }
+              derrotado();
 
-              //==============================================
-              //==============================================
-              if (jugador == index) {
-                return (Jugador(
-                    vColor: Colors.orange,
-                    vChild: Text(indexString,
-                        style: const TextStyle(color: Colors.white))));
-              } else if (posEnemigo == index) {
-                return Enemigo(
-                    vColor: Colors.red,
-                    vChild: Text(indexString,
-                        style: const TextStyle(color: Colors.white)));
-              } else if (nivelA[0].contains(index)) {
-                return Pixel(
-                    vColor: Colors.blue,
-                    vChild: Text(indexString,
-                        style: const TextStyle(color: Colors.white)));
-              } else if (nivelA[1].contains(index)) {
-                return Moneda(
-                    vColor: Colors.yellow,
-                    vChild: Text(indexString,
-                        style: const TextStyle(color: Colors.white)));
-              } else if (nivelA[3][0] == index) {
-                return Meta(
-                    vColor: Colors.white,
-                    vChild: Text(indexString,
-                        style: const TextStyle(color: Colors.white)));
-              } else {
-                return (Pixel(
-                    vColor: kBackgroundColor,
-                    vChild: Text(indexString,
-                        style: const TextStyle(color: Colors.white))));
+              if (jugador == nivel.meta) {
+                meta();
               }
             },
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: numFilas),
+            child: GridView.builder(
+              physics: const NeverScrollableScrollPhysics(),
+              itemCount: numPixeles,
+              itemBuilder: (BuildContext context, int index) {
+                //==============================================
+                //==============================================
+
+                //var indexString = index.toString();
+                var indexString = "";
+
+                //==============================================
+                //==============================================
+                if (jugador == index) {
+                  return (Jugador(
+                      vColor: Colors.orange,
+                      vChild: Text(indexString,
+                          style: const TextStyle(color: Colors.white))));
+                } else if (posEnemigo == index) {
+                  return Enemigo(
+                      vColor: Colors.red,
+                      vChild: Text(indexString,
+                          style: const TextStyle(color: Colors.white)));
+                } else if (nivel.barreras.contains(index)) {
+                  return Pixel(
+                      vColor: Colors.blue,
+                      vChild: Text(indexString,
+                          style: const TextStyle(color: Colors.white)));
+                } else if (nivel.monedas.contains(index)) {
+                  return Moneda(
+                      vColor: Colors.yellow,
+                      vChild: Text(indexString,
+                          style: const TextStyle(color: Colors.white)));
+                } else if (nivel.meta == index) {
+                  return Meta(
+                      vColor: Colors.white,
+                      vChild: Text(indexString,
+                          style: const TextStyle(color: Colors.white)));
+                } else {
+                  return (Pixel(
+                      vColor: kBackgroundColor,
+                      vChild: Text(indexString,
+                          style: const TextStyle(color: Colors.white))));
+                }
+              },
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: numFilas),
+            ),
           ),
         ),
         Expanded(
-            flex: 3,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.center,
+            flex: 2,
+            child: Row(
               children: [
-                ElevatedButton(
-                  onPressed: () {
-                    startJuego(0);
-                  },
-                  child: const Icon(
-                    Icons.arrow_drop_up,
-                    size: kBtnSize,
+                Flexible(
+                  flex: 3,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      ElevatedButton(
+                        onPressed: () {
+                          startJuego(0);
+                        },
+                        child: const Icon(
+                          Icons.arrow_drop_up,
+                          size: kBtnSize,
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 5,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          ElevatedButton(
+                            onPressed: () {
+                              startJuego(1);
+                            },
+                            child: const Icon(
+                              Icons.arrow_left,
+                              size: kBtnSize,
+                            ),
+                          ),
+                          const SizedBox(
+                            width: 90,
+                          ),
+                          ElevatedButton(
+                            onPressed: () {
+                              startJuego(2);
+                            },
+                            child: const Icon(
+                              Icons.arrow_right,
+                              size: kBtnSize,
+                            ),
+                          )
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 5,
+                      ),
+                      ElevatedButton(
+                        onPressed: () {
+                          startJuego(3);
+                        },
+                        child: const Icon(
+                          Icons.arrow_drop_down,
+                          size: kBtnSize,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-                const SizedBox(
-                  height: 5,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    ElevatedButton(
-                      onPressed: () {
-                        startJuego(1);
-                      },
-                      child: const Icon(
-                        Icons.arrow_left,
-                        size: kBtnSize,
-                      ),
-                    ),
-                    const SizedBox(
-                      width: 90,
-                    ),
-                    ElevatedButton(
-                      onPressed: () {
-                        startJuego(2);
-                      },
-                      child: const Icon(
-                        Icons.arrow_right,
-                        size: kBtnSize,
-                      ),
-                    )
-                  ],
-                ),
-                const SizedBox(
-                  height: 5,
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    startJuego(3);
-                  },
-                  child: const Icon(
-                    Icons.arrow_drop_down,
-                    size: kBtnSize,
-                  ),
-                ),
-
-                // const SizedBox(
-                //   width: 20,
-                // ),
-                // TextButton(
-                //     onPressed: () {
-                //       isJuegoStart = false;
-                //       nivelLActual = 1;
-                //       load();
-                //     },
-                //     child: const Text(
-                //       "Reiniciar",
-                //       style: TextStyle(
-                //           fontWeight: FontWeight.bold,
-                //           color: Colors.white),
-                //     )),
+                Flexible(
+                    flex: 1,
+                    child: Align(
+                        alignment: Alignment.topRight,
+                        child: Column(
+                          children: [
+                            const SizedBox(height: kFSize * 2),
+                            IconButton(
+                              icon: const Icon(
+                                Icons.menu,
+                                color: Colors.white,
+                                size: kFSize + 10,
+                              ),
+                              onPressed: () {
+                                getNivel();
+                                setNivel();
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const SeleccionarNivel()));
+                              },
+                            ),
+                            PopupMenuButton(
+                              icon: const Icon(
+                                Icons.more_horiz_rounded,
+                                color: Colors.white,
+                              ),
+                              onSelected: (valor) {
+                                if (valor == 0) {
+                                  setState(() {
+                                    nivelLActual = 1;
+                                    uNivel = 1;
+                                  });
+                                  monedasR = 0;
+                                  setNivel();
+                                  load();
+                                } else if (valor == 1) {
+                                  load();
+                                  monedasR = 0;
+                                  //antimonedas lo que hace es almacenar las monedas recolectadas, para volverlas a colocar al reaparecer por muerte
+                                  for (var element in antiMonedas) {
+                                    nivel.monedas.add(element);
+                                  }
+                                }
+                              },
+                              itemBuilder: (context) => [
+                                const PopupMenuItem(
+                                  value: 0,
+                                  child: Text("Reiniciar todos los niveles"),
+                                ),
+                                const PopupMenuItem(
+                                  value: 1,
+                                  child: Text("Reiniciar este nivel"),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ))),
               ],
             )),
         Expanded(
@@ -364,27 +484,50 @@ class _HomeScreenState extends State<HomeScreen> {
               alignment: Alignment.topLeft,
               padding: const EdgeInsets.all(kPaddingText),
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
                     "Nivel $nivelLActual",
                     style: const TextStyle(
-                        fontWeight: FontWeight.bold, color: Colors.white),
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                        fontSize: kFSize - 2),
                   ),
                   const SizedBox(
                     width: 20,
+                  ),
+                  const Icon(
+                    Icons.circle,
+                    color: Colors.yellow,
+                    size: kFSize - 1,
+                    shadows: [
+                      BoxShadow(
+                          color: Colors.white, blurRadius: 10, spreadRadius: 3)
+                    ],
+                  ),
+                  const SizedBox(
+                    width: 4,
                   ),
                   Text(
                     "Monedas: ${monedasR.toString()}",
                     style: const TextStyle(
-                        fontWeight: FontWeight.bold, color: Colors.white),
+                        color: Colors.white, fontSize: kFSize - 2),
                   ),
                   const SizedBox(
                     width: 20,
                   ),
+                  Image.asset(
+                    "assets/img/icono_vidas.png",
+                    width: kFSize,
+                    height: kFSize,
+                  ),
+                  const SizedBox(
+                    width: 3,
+                  ),
                   Text(
-                    "Vidas restantes: ${vidas.toString()}",
+                    "Vidas: ${vidas.toString()}",
                     style: const TextStyle(
-                        fontWeight: FontWeight.bold, color: Colors.white),
+                        color: Colors.white, fontSize: kFSize - 2),
                   ),
                 ],
               )),

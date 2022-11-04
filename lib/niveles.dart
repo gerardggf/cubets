@@ -1,6 +1,7 @@
-//1. barreras, 2. monedas, 3. enemigos, 4. meta
-List<List<int>> nivelL1 = [
-  [
+int numNiveles = 14;
+
+Map<String, dynamic> nivelN1 = {
+  "barreras": [
     0,
     1,
     2,
@@ -58,9 +59,9 @@ List<List<int>> nivelL1 = [
     65,
     66,
     67,
-  ], //barreras
-  [33, 35, 37, 86], //monedas
-  [
+  ],
+  "monedas": [33, 35, 37, 86],
+  "enemigo": [
     11,
     12,
     13,
@@ -83,12 +84,12 @@ List<List<int>> nivelL1 = [
     41,
     31,
     21
-  ], //enemigo (han d'estar en ordre)
-  [104] //meta
-];
+  ],
+  "meta": 104
+};
 
-List<List<int>> nivelL2 = [
-  [
+Map<String, dynamic> nivelN2 = {
+  "barreras": [
     0,
     1,
     2,
@@ -158,9 +159,9 @@ List<List<int>> nivelL2 = [
     96,
     106,
     107
-  ], //barreras
-  [33, 24, 87, 104], //monedas
-  [
+  ],
+  "monedas": [33, 24, 87, 104],
+  "enemigo": [
     11,
     12,
     13,
@@ -187,12 +188,12 @@ List<List<int>> nivelL2 = [
     41,
     31,
     21
-  ], //enemigo (poner orden de recorrido que va a seguir el enemigo)
-  [84] //meta
-];
+  ],
+  "meta": 84
+};
 
-List<List<int>> nivelL3 = [
-  [
+Map<String, dynamic> nivelN3 = {
+  "barreras": [
     0,
     1,
     2,
@@ -268,9 +269,9 @@ List<List<int>> nivelL3 = [
     75,
     76,
     107
-  ], //barreras
-  [27, 24, 98, 96], //monedas
-  [
+  ],
+  "monedas": [27, 24, 98, 96],
+  "enemigo": [
     11,
     12,
     13,
@@ -309,12 +310,12 @@ List<List<int>> nivelL3 = [
     41,
     31,
     21
-  ], //enemigo (poner orden de recorrido que va a seguir el enemigo)
-  [115] //meta
-];
+  ],
+  "meta": 115
+};
 
-List<List<int>> nivelL4 = [
-  [
+Map<String, dynamic> nivelN4 = {
+  "barreras": [
     0,
     1,
     2,
@@ -357,7 +358,6 @@ List<List<int>> nivelL4 = [
     127,
     128,
     129,
-    //ya variables
     91,
     92,
     94,
@@ -374,19 +374,26 @@ List<List<int>> nivelL4 = [
     47,
     37,
     27,
-    33, 34, 35, 36,
+    33,
+    34,
+    35,
+    36,
     22,
     32,
-    55, 56,
+    55,
+    56,
     72,
     73,
     74,
     75,
     107,
-    93, 63, 53, 43
-  ], //barreras
-  [46, 18, 11, 81], //monedas
-  [
+    93,
+    63,
+    53,
+    43
+  ],
+  "monedas": [46, 18, 11, 81],
+  "enemigo": [
     11,
     12,
     13,
@@ -415,12 +422,12 @@ List<List<int>> nivelL4 = [
     41,
     31,
     21
-  ], //enemigo (poner orden de recorrido que va a seguir el enemigo)
-  [105] //meta
-];
+  ],
+  "meta": 105
+};
 
-List<List<int>> nivelL5 = [
-  [
+Map<String, dynamic> nivelN5 = {
+  "barreras": [
     0,
     1,
     2,
@@ -495,13 +502,13 @@ List<List<int>> nivelL5 = [
     128,
     129,
   ],
-  [
+  "monedas": [
     14,
     65,
     87,
     113,
   ],
-  [
+  "enemigo": [
     68,
     58,
     48,
@@ -539,11 +546,11 @@ List<List<int>> nivelL5 = [
     88,
     78
   ],
-  [117]
-];
+  "meta": 117
+};
 
-List<List<int>> nivelL6 = [
-  [
+Map<String, dynamic> nivelN6 = {
+  "barreras": [
     0,
     1,
     2,
@@ -622,13 +629,13 @@ List<List<int>> nivelL6 = [
     128,
     129,
   ],
-  [
+  "monedas": [
     14,
     38,
     56,
     91,
   ],
-  [
+  "enemigo": [
     58,
     68,
     78,
@@ -666,11 +673,11 @@ List<List<int>> nivelL6 = [
     38,
     48,
   ],
-  [18]
-];
+  "meta": 18
+};
 
-List<List<int>> nivelL7 = [
-  [
+Map<String, dynamic> nivelN7 = {
+  "barreras": [
     0,
     1,
     2,
@@ -749,13 +756,13 @@ List<List<int>> nivelL7 = [
     128,
     129,
   ],
-  [
+  "monedas": [
     12,
     16,
     77,
     114,
   ],
-  [
+  "enemigo": [
     11,
     12,
     13,
@@ -806,11 +813,11 @@ List<List<int>> nivelL7 = [
     115,
     118,
   ],
-  [117]
-];
+  "meta": 117
+};
 
-List<List<int>> nivelL8 = [
-  [
+Map<String, dynamic> nivelN8 = {
+  "barreras": [
     0,
     1,
     2,
@@ -888,8 +895,8 @@ List<List<int>> nivelL8 = [
     128,
     129
   ],
-  [11, 38, 51, 71],
-  [
+  "monedas": [11, 38, 51, 71],
+  "enemigo": [
     11,
     12,
     13,
@@ -946,11 +953,11 @@ List<List<int>> nivelL8 = [
     12,
     11
   ],
-  [107]
-];
+  "meta": 107
+};
 
-List<List<int>> nivelL9 = [
-  [
+Map<String, dynamic> nivelN9 = {
+  "barreras": [
     0,
     1,
     2,
@@ -1029,13 +1036,13 @@ List<List<int>> nivelL9 = [
     128,
     129,
   ],
-  [
+  "monedas": [
     36,
     55,
     71,
     95,
   ],
-  [
+  "enemigo": [
     96,
     97,
     98,
@@ -1093,11 +1100,11 @@ List<List<int>> nivelL9 = [
     85,
     95
   ],
-  [11]
-];
+  "meta": 11
+};
 
-List<List<int>> nivelL10 = [
-  [
+Map<String, dynamic> nivelN10 = {
+  "barreras": [
     0,
     1,
     2,
@@ -1174,13 +1181,13 @@ List<List<int>> nivelL10 = [
     128,
     129,
   ],
-  [
+  "monedas": [
     11,
     53,
     68,
     96,
   ],
-  [
+  "enemigo": [
     46,
     56,
     66,
@@ -1232,11 +1239,11 @@ List<List<int>> nivelL10 = [
     26,
     36
   ],
-  [33]
-];
+  "meta": 33
+};
 
-List<List<int>> nivelL11 = [
-  [
+Map<String, dynamic> nivelN11 = {
+  "barreras": [
     0,
     1,
     2,
@@ -1313,13 +1320,13 @@ List<List<int>> nivelL11 = [
     128,
     129,
   ],
-  [
+  "monedas": [
     11,
     36,
     53,
     91,
   ],
-  [
+  "enemigo": [
     11,
     13,
     14,
@@ -1366,11 +1373,10 @@ List<List<int>> nivelL11 = [
     96,
     98
   ],
-  [107]
-];
-
-List<List<int>> nivelL12 = [
-  [
+  "meta": 107
+};
+Map<String, dynamic> nivelN12 = {
+  "barreras": [
     0,
     1,
     2,
@@ -1449,13 +1455,13 @@ List<List<int>> nivelL12 = [
     128,
     129,
   ],
-  [
+  "monedas": [
     33,
     36,
     76,
     116,
   ],
-  [
+  "enemigo": [
     11,
     12,
     13,
@@ -1506,11 +1512,11 @@ List<List<int>> nivelL12 = [
     117,
     118,
   ],
-  [91]
-];
+  "meta": 91
+};
 
-List<List<int>> nivelL13 = [
-  [
+Map<String, dynamic> nivelN13 = {
+  "barreras": [
     0,
     1,
     2,
@@ -1590,13 +1596,13 @@ List<List<int>> nivelL13 = [
     128,
     129,
   ],
-  [
+  "monedas": [
     16,
     44,
     76,
     96,
   ],
-  [
+  "enemigo": [
     11,
     12,
     13,
@@ -1641,11 +1647,11 @@ List<List<int>> nivelL13 = [
     96,
     98,
   ],
-  [118]
-];
+  "meta": 118
+};
 
-List<List<int>> nivelL14 = [
-  [
+Map<String, dynamic> nivelN14 = {
+  "barreras": [
     0,
     1,
     2,
@@ -1720,13 +1726,13 @@ List<List<int>> nivelL14 = [
     128,
     129,
   ],
-  [
+  "monedas": [
     12,
     38,
     76,
     118,
   ],
-  [
+  "enemigo": [
     12,
     13,
     14,
@@ -1781,5 +1787,5 @@ List<List<int>> nivelL14 = [
     117,
     118
   ],
-  [102]
-];
+  "meta": 102
+};
