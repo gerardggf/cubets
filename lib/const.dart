@@ -5,11 +5,13 @@ const int numColumnas = 13;
 
 const int jugadorPosOrigen = ((numFilas) * (numColumnas - 2)) + 1;
 
-const kVidas = 5;
-
 const kPadding = 1.0;
 const kPaddingText = 20.0;
 const kBackgroundColor = Colors.black;
-const kBtnSize = 60.00;
 
+const kBtnSize = 60.00;
 const kFSize = 18.00;
+
+const noPos = 130;
+
+const eTime = 250;
