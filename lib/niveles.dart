@@ -1,4 +1,5 @@
-Map<String, dynamic> nivelN0 = {
+//0
+Map<String, dynamic> tutorial = {
   "barreras": [
     0,
     1,
@@ -48,13 +49,13 @@ Map<String, dynamic> nivelN0 = {
     87,
     88
   ],
-  "monedas": [106, 107, 104, 105],
+  "monedas": [42, 72, 104, 107],
   "enemigo": [25, 26, 27, 37, 36, 35],
   "enemigo2": [67, 57, 56, 55, 65, 66],
   "meta": 22,
 };
-
-Map<String, dynamic> nivelN1 = {
+//1
+Map<String, dynamic> e1d01f01 = {
   "barreras": [
     0,
     1,
@@ -142,8 +143,8 @@ Map<String, dynamic> nivelN1 = {
   "enemigo2": [],
   "meta": 104
 };
-
-Map<String, dynamic> nivelN2 = {
+//2
+Map<String, dynamic> e1d01f02 = {
   "barreras": [
     0,
     1,
@@ -247,8 +248,8 @@ Map<String, dynamic> nivelN2 = {
   "enemigo2": [],
   "meta": 84
 };
-
-Map<String, dynamic> nivelN3 = {
+//3
+Map<String, dynamic> e1d02f03 = {
   "barreras": [
     0,
     1,
@@ -370,8 +371,8 @@ Map<String, dynamic> nivelN3 = {
   "enemigo2": [],
   "meta": 115
 };
-
-Map<String, dynamic> nivelN4 = {
+//4
+Map<String, dynamic> e1d03f03 = {
   "barreras": [
     0,
     1,
@@ -483,8 +484,8 @@ Map<String, dynamic> nivelN4 = {
   "enemigo2": [],
   "meta": 105
 };
-
-Map<String, dynamic> nivelN5 = {
+//5
+Map<String, dynamic> e1d04f03 = {
   "barreras": [
     0,
     1,
@@ -607,8 +608,8 @@ Map<String, dynamic> nivelN5 = {
   "enemigo2": [],
   "meta": 117
 };
-
-Map<String, dynamic> nivelN6 = {
+//6
+Map<String, dynamic> e1d05f03 = {
   "barreras": [
     0,
     1,
@@ -735,8 +736,150 @@ Map<String, dynamic> nivelN6 = {
   "enemigo2": [],
   "meta": 18
 };
-
-Map<String, dynamic> nivelN7 = {
+//7
+Map<String, dynamic> e2d04f04 = {
+  "barreras": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    19,
+    20,
+    22,
+    23,
+    25,
+    26,
+    27,
+    29,
+    30,
+    32,
+    33,
+    35,
+    36,
+    39,
+    40,
+    42,
+    43,
+    45,
+    46,
+    48,
+    49,
+    50,
+    52,
+    53,
+    55,
+    56,
+    59,
+    60,
+    62,
+    63,
+    65,
+    66,
+    67,
+    69,
+    70,
+    72,
+    73,
+    75,
+    76,
+    79,
+    80,
+    82,
+    83,
+    85,
+    86,
+    87,
+    88,
+    89,
+    90,
+    99,
+    100,
+    101,
+    102,
+    103,
+    104,
+    105,
+    106,
+    109,
+    110,
+    119,
+    120,
+    121,
+    122,
+    123,
+    124,
+    125,
+    126,
+    127,
+    128,
+    129,
+    107
+  ],
+  "monedas": [
+    11,
+    77,
+    91,
+    98,
+  ],
+  "enemigo": [
+    91,
+    92,
+    93,
+    94,
+    84,
+    74,
+    64,
+    54,
+    44,
+    34,
+    24,
+    14,
+    13,
+    12,
+    11,
+    21,
+    31,
+    41,
+    51,
+    61,
+    71,
+    81,
+  ],
+  "enemigo2": [
+    14,
+    15,
+    16,
+    17,
+    27,
+    37,
+    47,
+    57,
+    67,
+    77,
+    87,
+    97,
+    96,
+    95,
+    94,
+    84,
+    74,
+    64,
+    54,
+    44,
+    34,
+    24,
+  ],
+  "meta": 18
+};
+//8
+Map<String, dynamic> e3d05f03 = {
   "barreras": [
     0,
     1,
@@ -876,8 +1019,8 @@ Map<String, dynamic> nivelN7 = {
   "enemigo2": [],
   "meta": 117
 };
-
-Map<String, dynamic> nivelN8 = {
+//9
+Map<String, dynamic> e1d05f04 = {
   "barreras": [
     0,
     1,
@@ -1017,8 +1160,8 @@ Map<String, dynamic> nivelN8 = {
   "enemigo2": [],
   "meta": 107
 };
-
-Map<String, dynamic> nivelN9 = {
+//10
+Map<String, dynamic> e1d06f03 = {
   "barreras": [
     0,
     1,
@@ -1165,8 +1308,8 @@ Map<String, dynamic> nivelN9 = {
   "enemigo2": [],
   "meta": 11
 };
-
-Map<String, dynamic> nivelN10 = {
+//11
+Map<String, dynamic> e1d06f04 = {
   "barreras": [
     0,
     1,
@@ -1305,8 +1448,8 @@ Map<String, dynamic> nivelN10 = {
   "enemigo2": [],
   "meta": 33
 };
-
-Map<String, dynamic> nivelN11 = {
+//12
+Map<String, dynamic> e2d06f04 = {
   "barreras": [
     0,
     1,
@@ -1449,8 +1592,8 @@ Map<String, dynamic> nivelN11 = {
   ],
   "meta": 94,
 };
-
-Map<String, dynamic> nivelN12 = {
+//13
+Map<String, dynamic> e1d07f03 = {
   "barreras": [
     0,
     1,
@@ -1585,8 +1728,8 @@ Map<String, dynamic> nivelN12 = {
   "enemigo2": [],
   "meta": 113,
 };
-
-Map<String, dynamic> nivelN13 = {
+//14
+Map<String, dynamic> e3d07f03 = {
   "barreras": [
     0,
     1,
@@ -1720,8 +1863,8 @@ Map<String, dynamic> nivelN13 = {
   "enemigo2": [],
   "meta": 107
 };
-
-Map<String, dynamic> nivelN14 = {
+//15
+Map<String, dynamic> e3d07f04 = {
   "barreras": [
     0,
     1,
@@ -1861,8 +2004,8 @@ Map<String, dynamic> nivelN14 = {
   "enemigo2": [],
   "meta": 91
 };
-
-Map<String, dynamic> nivelN15 = {
+//16
+Map<String, dynamic> e3d08f05 = {
   "barreras": [
     0,
     1,
@@ -1997,8 +2140,8 @@ Map<String, dynamic> nivelN15 = {
   "enemigo2": [],
   "meta": 118
 };
-
-Map<String, dynamic> nivelN16 = {
+//17
+Map<String, dynamic> e3d08f04 = {
   "barreras": [
     0,
     1,
@@ -2138,8 +2281,8 @@ Map<String, dynamic> nivelN16 = {
   "enemigo2": [],
   "meta": 102
 };
-
-Map<String, dynamic> nivelN17 = {
+//18
+Map<String, dynamic> e3d09f02 = {
   "barreras": [
     0,
     1,
@@ -2261,8 +2404,8 @@ Map<String, dynamic> nivelN17 = {
   "enemigo2": [],
   "meta": 15,
 };
-
-Map<String, dynamic> nivelN18 = {
+//19
+Map<String, dynamic> e2d08f04 = {
   "barreras": [
     0,
     1,
@@ -2279,51 +2422,46 @@ Map<String, dynamic> nivelN18 = {
     20,
     22,
     23,
+    24,
     25,
-    26,
     27,
     29,
     30,
     32,
-    33,
     35,
-    36,
+    37,
     39,
     40,
     42,
-    43,
+    44,
     45,
-    46,
-    48,
+    47,
     49,
     50,
-    52,
-    53,
-    55,
-    56,
+    57,
     59,
     60,
     62,
     63,
+    64,
     65,
     66,
     67,
     69,
     70,
     72,
-    73,
-    75,
-    76,
+    77,
     79,
     80,
     82,
-    83,
+    84,
     85,
-    86,
     87,
-    88,
     89,
     90,
+    92,
+    95,
+    97,
     99,
     100,
     101,
@@ -2331,7 +2469,7 @@ Map<String, dynamic> nivelN18 = {
     103,
     104,
     105,
-    106,
+    107,
     109,
     110,
     119,
@@ -2348,57 +2486,443 @@ Map<String, dynamic> nivelN18 = {
   ],
   "monedas": [
     11,
-    77,
-    91,
-    98,
+    18,
+    34,
+    94,
   ],
   "enemigo": [
-    91,
-    92,
+    96,
+    86,
+    76,
+    66,
+    56,
+    46,
+    36,
+    35,
+    34,
+    33,
+    43,
+    53,
+    63,
+    73,
+    83,
     93,
     94,
-    84,
-    74,
-    64,
-    54,
-    44,
-    34,
-    24,
-    14,
-    13,
-    12,
-    11,
-    21,
-    31,
-    41,
-    51,
-    61,
-    71,
-    81,
+    95,
   ],
   "enemigo2": [
+    11,
+    12,
+    13,
     14,
     15,
     16,
     17,
-    27,
-    37,
-    47,
+    18,
+    28,
+    38,
+    48,
+    58,
     57,
-    67,
-    77,
-    87,
-    97,
-    96,
-    95,
-    94,
-    84,
-    74,
-    64,
+    56,
+    55,
     54,
-    44,
-    34,
-    24,
+    53,
+    52,
+    51,
+    41,
+    31,
+    21,
   ],
-  "meta": 18
+  "meta": 91
 };
+//20
+Map<String, dynamic> e1d03f04 = {
+  "barreras": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    32,
+    37,
+    39,
+    40,
+    42,
+    44,
+    45,
+    47,
+    49,
+    50,
+    52,
+    54,
+    57,
+    59,
+    60,
+    62,
+    64,
+    66,
+    67,
+    69,
+    70,
+    72,
+    74,
+    77,
+    79,
+    80,
+    82,
+    84,
+    85,
+    87,
+    89,
+    90,
+    92,
+    94,
+    97,
+    99,
+    100,
+    102,
+    104,
+    105,
+    106,
+    107,
+    109,
+    110,
+    112,
+    119,
+    120,
+    121,
+    122,
+    123,
+    124,
+    125,
+    126,
+    127,
+    128,
+    129,
+  ],
+  "monedas": [
+    11,
+    33,
+    58,
+    113,
+  ],
+  "enemigo": [
+    13,
+    14,
+    15,
+    16,
+    26,
+    36,
+    46,
+    56,
+    55,
+    65,
+    75,
+    76,
+    77,
+    78,
+    88,
+    98,
+    108,
+    118,
+    117,
+    116,
+    115,
+    114,
+    113,
+    103,
+    93,
+    83,
+    73,
+    63,
+    53,
+    43,
+    33,
+    23
+  ],
+  "enemigo2": [],
+  "meta": 95
+};
+//21
+Map<String, dynamic> e2d04f01 = {
+  "barreras": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    19,
+    20,
+    22,
+    23,
+    26,
+    27,
+    29,
+    30,
+    32,
+    33,
+    36,
+    37,
+    39,
+    40,
+    42,
+    43,
+    46,
+    47,
+    49,
+    50,
+    54,
+    55,
+    59,
+    60,
+    61,
+    62,
+    67,
+    68,
+    69,
+    70,
+    72,
+    77,
+    79,
+    80,
+    82,
+    87,
+    89,
+    90,
+    99,
+    100,
+    101,
+    102,
+    107,
+    108,
+    109,
+    110,
+    119,
+    120,
+    121,
+    122,
+    123,
+    124,
+    125,
+    126,
+    127,
+    128,
+    129,
+  ],
+  "monedas": [
+    44,
+    45,
+    71,
+    78,
+  ],
+  "enemigo": [
+    51,
+    41,
+    31,
+    21,
+    11,
+    12,
+    13,
+    14,
+    24,
+    34,
+    44,
+    54,
+    64,
+    74,
+    84,
+    94,
+    93,
+    92,
+    91,
+    81,
+    71,
+    61,
+  ],
+  "enemigo2": [
+    65,
+    75,
+    85,
+    95,
+    96,
+    97,
+    98,
+    88,
+    78,
+    68,
+    58,
+    48,
+    38,
+    28,
+    18,
+    17,
+    16,
+    15,
+    25,
+    35,
+    45,
+    55,
+  ],
+  "meta": 118
+};
+//22
+Map<String, dynamic> e1d01f03 = {
+  "barreras": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    14,
+    19,
+    20,
+    22,
+    24,
+    26,
+    27,
+    29,
+    30,
+    31,
+    32,
+    34,
+    36,
+    39,
+    40,
+    44,
+    46,
+    48,
+    49,
+    50,
+    52,
+    53,
+    54,
+    56,
+    59,
+    60,
+    66,
+    67,
+    69,
+    70,
+    71,
+    72,
+    73,
+    78,
+    79,
+    80,
+    84,
+    86,
+    89,
+    90,
+    92,
+    93,
+    94,
+    96,
+    97,
+    99,
+    100,
+    104,
+    106,
+    109,
+    110,
+    112,
+    116,
+    119,
+    120,
+    121,
+    122,
+    123,
+    124,
+    125,
+    126,
+    127,
+    128,
+    129,
+  ],
+  "monedas": [
+    18,
+    21,
+    83,
+    117,
+  ],
+  "enemigo": [
+    65,
+    55,
+    45,
+    35,
+    25,
+    15,
+    25,
+    35,
+    45,
+    55,
+    65,
+    64,
+    63,
+    62,
+    61,
+    62,
+    63,
+    64,
+    65,
+    75,
+    85,
+    95,
+    105,
+    115,
+    105,
+    95,
+    85,
+    75
+  ],
+  "enemigo2": [],
+  "meta": 68
+};
+//23
+
+//24
+
+//25
+
+//26
+
+//27
+
+//28
+
+//29
+
+//30
+
+//31
+
+//32
+
+//33

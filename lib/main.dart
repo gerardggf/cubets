@@ -1,27 +1,35 @@
 import 'package:flutter/material.dart';
-import 'package:platjoc/providers/nivelinfo.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:platjoc/bloc/infomuertes_bloc.dart';
+import 'package:platjoc/bloc/infonivel_bloc.dart';
 import 'package:platjoc/screens/home.dart';
-import 'package:provider/provider.dart';
 
 void main() {
-  runApp(MultiProvider(
-      providers: [ChangeNotifierProvider(create: (_) => NivelInfo())],
-      child: const MyApp()));
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Cubets',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (_) => InfoMuertesBloc(),
+        ),
+        BlocProvider(
+          create: (_) => InfoNivelBloc(),
+        ),
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Cubets',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: const HomeScreen(),
       ),
-      home: const HomeScreen(),
     );
   }
 }
