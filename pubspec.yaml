@@ -82,7 +82,7 @@ flutter:
   assets:
     - assets/img/app_logo.png
     - assets/img/icono_vidas.png
-    - assets/audio/cogerMoneda.wav
+    - assets/audio/cogerMoneda.mp3
     - assets/audio/derrotado.wav
     - assets/audio/siguienteNivel.wav
 

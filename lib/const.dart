@@ -15,8 +15,13 @@ const kFSize = 18.00;
 //posición para que no hayan objetos en la matriz (feura del mapa)
 const noPos = 130;
 
-//maximo de derrotas antes de reiniciar niveles
-const maxDerrotas = 10;
+//===============================================================================
 
+//maximo de derrotas antes de reiniciar niveles
+const vidas = 20;
 //tiempo actualización enemigos
 const eTime = 250;
+//activar números posición en cada cuadrícula
+const cuadriculaNums = true;
+//nivel máximo guardado en el almacenamiento local
+const maxNivelAlcanzado = 24;

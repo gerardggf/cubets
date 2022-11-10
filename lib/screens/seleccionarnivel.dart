@@ -78,48 +78,78 @@ class _SeleccionarNivelState extends State<SeleccionarNivel> {
   }
 }
 
+//===========================================================================================================
+List<Map<String, dynamic>> arrayNiveles = [
+  d00i000,
+  d01i001,
+  d01i002,
+  d01i003,
+  d02i004,
+  d03i023,
+  d03i005,
+  d03i006,
+  d04i007,
+  d04i008,
+  d04i009,
+  d05i010,
+  d05i011,
+  d05i012,
+  d06i013,
+  d06i014,
+  d06i015,
+  d06i021,
+  d07i016,
+  d07i020,
+  d07i017,
+  d07i018,
+  d08i019,
+  d09i022,
+  d09i024
+];
+//===========================================================================================================
+
 mappearNiveles() {
-  final nivelF0 = tutorial;
-  final nivelF1 = e1d01f01;
-  final nivelF2 = e1d01f02;
-  final nivelF3 = e1d01f03;
-  final nivelF4 = e1d02f03;
-  final nivelF5 = e1d03f03;
-  final nivelF6 = e1d03f04;
-  final nivelF7 = e1d04f03;
-  final nivelF8 = e2d04f01;
-  final nivelF9 = e2d04f04;
-  final nivelF10 = e1d05f03;
-  final nivelF11 = e1d05f04;
-  final nivelF12 = e3d05f03;
-  final nivelF13 = e1d06f03;
-  final nivelF14 = e1d06f04;
-  final nivelF15 = e2d06f04;
-  final nivelF16 = e1d07f03;
-  final nivelF17 = e3d07f03;
-  final nivelF18 = e3d07f04;
-  final nivelF19 = e2d08f04;
-  final nivelF20 = e3d08f04;
-  final nivelF21 = e3d08f05;
-  final nivelF22 = e3d09f02;
-  final nivelF23 = tutorial;
-  final nivelF24 = tutorial;
-  final nivelF25 = tutorial;
-  final nivelF26 = tutorial;
-  final nivelF27 = tutorial;
-  final nivelF28 = tutorial;
-  final nivelF29 = tutorial;
-  final nivelF30 = tutorial;
-  final nivelF31 = tutorial;
-  final nivelF32 = tutorial;
-  final nivelF33 = tutorial;
-  final nivelF34 = tutorial;
-  final nivelF35 = tutorial;
-  final nivelF36 = tutorial;
-  final nivelF37 = tutorial;
-  final nivelF38 = tutorial;
-  final nivelF39 = tutorial;
-  final nivelF40 = tutorial;
+  final nivelF0 = arrayNiveles[0];
+  final nivelF1 = arrayNiveles[1];
+  final nivelF2 = arrayNiveles[2];
+  final nivelF3 = arrayNiveles[3];
+  final nivelF4 = arrayNiveles[4];
+  final nivelF5 = arrayNiveles[5];
+  final nivelF6 = arrayNiveles[6];
+  final nivelF7 = arrayNiveles[7];
+  final nivelF8 = arrayNiveles[8];
+  final nivelF9 = arrayNiveles[9];
+  final nivelF10 = arrayNiveles[10];
+  final nivelF11 = arrayNiveles[11];
+  final nivelF12 = arrayNiveles[12];
+  final nivelF13 = arrayNiveles[13];
+  final nivelF14 = arrayNiveles[14];
+  final nivelF15 = arrayNiveles[15];
+  final nivelF16 = arrayNiveles[16];
+  final nivelF17 = arrayNiveles[17];
+  final nivelF18 = arrayNiveles[18];
+  final nivelF19 = arrayNiveles[19];
+  final nivelF20 = arrayNiveles[20];
+  final nivelF21 = arrayNiveles[21];
+  final nivelF22 = arrayNiveles[22];
+  final nivelF23 = arrayNiveles[23];
+  final nivelF24 = arrayNiveles[24];
+  final nivelF25 = arrayNiveles[0];
+  final nivelF26 = arrayNiveles[0];
+  final nivelF27 = arrayNiveles[0];
+  final nivelF28 = arrayNiveles[0];
+  final nivelF29 = arrayNiveles[0];
+  final nivelF30 = arrayNiveles[0];
+  final nivelF31 = arrayNiveles[0];
+  final nivelF32 = arrayNiveles[0];
+  final nivelF33 = arrayNiveles[0];
+  final nivelF34 = arrayNiveles[0];
+  final nivelF35 = arrayNiveles[0];
+  final nivelF36 = arrayNiveles[0];
+  final nivelF37 = arrayNiveles[0];
+  final nivelF38 = arrayNiveles[0];
+  final nivelF39 = arrayNiveles[0];
+  final nivelF40 = arrayNiveles[0];
 
   switch (nivelLActual) {
     case 0:

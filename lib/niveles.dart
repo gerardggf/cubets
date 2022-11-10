@@ -1,5 +1,5 @@
 //0
-Map<String, dynamic> tutorial = {
+Map<String, dynamic> d00i000 = {
   "barreras": [
     0,
     1,
@@ -55,7 +55,7 @@ Map<String, dynamic> tutorial = {
   "meta": 22,
 };
 //1
-Map<String, dynamic> e1d01f01 = {
+Map<String, dynamic> d01i001 = {
   "barreras": [
     0,
     1,
@@ -144,7 +144,7 @@ Map<String, dynamic> e1d01f01 = {
   "meta": 104
 };
 //2
-Map<String, dynamic> e1d01f02 = {
+Map<String, dynamic> d01i002 = {
   "barreras": [
     0,
     1,
@@ -249,7 +249,7 @@ Map<String, dynamic> e1d01f02 = {
   "meta": 84
 };
 //3
-Map<String, dynamic> e1d02f03 = {
+Map<String, dynamic> d02i004 = {
   "barreras": [
     0,
     1,
@@ -372,7 +372,7 @@ Map<String, dynamic> e1d02f03 = {
   "meta": 115
 };
 //4
-Map<String, dynamic> e1d03f03 = {
+Map<String, dynamic> d03i005 = {
   "barreras": [
     0,
     1,
@@ -485,7 +485,7 @@ Map<String, dynamic> e1d03f03 = {
   "meta": 105
 };
 //5
-Map<String, dynamic> e1d04f03 = {
+Map<String, dynamic> d04i007 = {
   "barreras": [
     0,
     1,
@@ -609,7 +609,7 @@ Map<String, dynamic> e1d04f03 = {
   "meta": 117
 };
 //6
-Map<String, dynamic> e1d05f03 = {
+Map<String, dynamic> d05i010 = {
   "barreras": [
     0,
     1,
@@ -737,7 +737,7 @@ Map<String, dynamic> e1d05f03 = {
   "meta": 18
 };
 //7
-Map<String, dynamic> e2d04f04 = {
+Map<String, dynamic> d04i008 = {
   "barreras": [
     0,
     1,
@@ -879,7 +879,7 @@ Map<String, dynamic> e2d04f04 = {
   "meta": 18
 };
 //8
-Map<String, dynamic> e3d05f03 = {
+Map<String, dynamic> d05i011 = {
   "barreras": [
     0,
     1,
@@ -1020,7 +1020,7 @@ Map<String, dynamic> e3d05f03 = {
   "meta": 117
 };
 //9
-Map<String, dynamic> e1d05f04 = {
+Map<String, dynamic> d05i012 = {
   "barreras": [
     0,
     1,
@@ -1161,7 +1161,7 @@ Map<String, dynamic> e1d05f04 = {
   "meta": 107
 };
 //10
-Map<String, dynamic> e1d06f03 = {
+Map<String, dynamic> d06i013 = {
   "barreras": [
     0,
     1,
@@ -1309,7 +1309,7 @@ Map<String, dynamic> e1d06f03 = {
   "meta": 11
 };
 //11
-Map<String, dynamic> e1d06f04 = {
+Map<String, dynamic> d06i014 = {
   "barreras": [
     0,
     1,
@@ -1449,7 +1449,7 @@ Map<String, dynamic> e1d06f04 = {
   "meta": 33
 };
 //12
-Map<String, dynamic> e2d06f04 = {
+Map<String, dynamic> d06i015 = {
   "barreras": [
     0,
     1,
@@ -1593,7 +1593,7 @@ Map<String, dynamic> e2d06f04 = {
   "meta": 94,
 };
 //13
-Map<String, dynamic> e1d07f03 = {
+Map<String, dynamic> d07i016 = {
   "barreras": [
     0,
     1,
@@ -1729,7 +1729,7 @@ Map<String, dynamic> e1d07f03 = {
   "meta": 113,
 };
 //14
-Map<String, dynamic> e3d07f03 = {
+Map<String, dynamic> d07i020 = {
   "barreras": [
     0,
     1,
@@ -1864,7 +1864,7 @@ Map<String, dynamic> e3d07f03 = {
   "meta": 107
 };
 //15
-Map<String, dynamic> e3d07f04 = {
+Map<String, dynamic> d07i017 = {
   "barreras": [
     0,
     1,
@@ -2005,7 +2005,7 @@ Map<String, dynamic> e3d07f04 = {
   "meta": 91
 };
 //16
-Map<String, dynamic> e3d08f05 = {
+Map<String, dynamic> d07i018 = {
   "barreras": [
     0,
     1,
@@ -2141,7 +2141,7 @@ Map<String, dynamic> e3d08f05 = {
   "meta": 118
 };
 //17
-Map<String, dynamic> e3d08f04 = {
+Map<String, dynamic> d08i019 = {
   "barreras": [
     0,
     1,
@@ -2282,7 +2282,7 @@ Map<String, dynamic> e3d08f04 = {
   "meta": 102
 };
 //18
-Map<String, dynamic> e3d09f02 = {
+Map<String, dynamic> d09i022 = {
   "barreras": [
     0,
     1,
@@ -2405,7 +2405,7 @@ Map<String, dynamic> e3d09f02 = {
   "meta": 15,
 };
 //19
-Map<String, dynamic> e2d08f04 = {
+Map<String, dynamic> d06i021 = {
   "barreras": [
     0,
     1,
@@ -2537,7 +2537,7 @@ Map<String, dynamic> e2d08f04 = {
   "meta": 91
 };
 //20
-Map<String, dynamic> e1d03f04 = {
+Map<String, dynamic> d03i006 = {
   "barreras": [
     0,
     1,
@@ -2660,7 +2660,7 @@ Map<String, dynamic> e1d03f04 = {
   "meta": 95
 };
 //21
-Map<String, dynamic> e2d04f01 = {
+Map<String, dynamic> d04i009 = {
   "barreras": [
     0,
     1,
@@ -2788,7 +2788,7 @@ Map<String, dynamic> e2d04f01 = {
   "meta": 118
 };
 //22
-Map<String, dynamic> e1d01f03 = {
+Map<String, dynamic> d01i003 = {
   "barreras": [
     0,
     1,
@@ -2906,8 +2906,272 @@ Map<String, dynamic> e1d01f03 = {
   "meta": 68
 };
 //23
-
+Map<String, dynamic> d03i023 = {
+  "barreras": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    15,
+    19,
+    20,
+    22,
+    23,
+    25,
+    26,
+    27,
+    29,
+    30,
+    33,
+    36,
+    39,
+    40,
+    41,
+    43,
+    44,
+    46,
+    48,
+    49,
+    50,
+    53,
+    56,
+    59,
+    60,
+    62,
+    63,
+    65,
+    66,
+    67,
+    69,
+    70,
+    73,
+    76,
+    79,
+    80,
+    81,
+    83,
+    84,
+    86,
+    88,
+    89,
+    90,
+    93,
+    96,
+    99,
+    100,
+    102,
+    103,
+    105,
+    106,
+    107,
+    109,
+    110,
+    113,
+    119,
+    120,
+    121,
+    122,
+    123,
+    124,
+    125,
+    126,
+    127,
+    128,
+    129,
+  ],
+  "monedas": [
+    12,
+    68,
+    112,
+    114,
+  ],
+  "enemigo": [
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38,
+    48,
+    58,
+    57,
+    56,
+    55,
+    54,
+    53,
+    52,
+    51,
+    41,
+  ],
+  "enemigo2": [
+    78,
+    77,
+    76,
+    75,
+    74,
+    73,
+    72,
+    71,
+    81,
+    91,
+    92,
+    93,
+    94,
+    95,
+    96,
+    97,
+    98,
+    88,
+  ],
+  "meta": 16
+};
 //24
+Map<String, dynamic> d09i024 = {
+  "barreras": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    19,
+    20,
+    22,
+    24,
+    25,
+    26,
+    27,
+    29,
+    30,
+    32,
+    37,
+    39,
+    40,
+    41,
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    57,
+    58,
+    59,
+    60,
+    61,
+    62,
+    63,
+    64,
+    67,
+    74,
+    77,
+    79,
+    80,
+    81,
+    82,
+    84,
+    86,
+    87,
+    89,
+    90,
+    94,
+    99,
+    100,
+    102,
+    104,
+    106,
+    107,
+    108,
+    109,
+    110,
+    112,
+    114,
+    119,
+    120,
+    121,
+    122,
+    123,
+    124,
+    125,
+    126,
+    127,
+    128,
+    129,
+  ],
+  "monedas": [
+    31,
+    36,
+    113,
+    118,
+  ],
+  "enemigo": [
+    93,
+    94,
+    95,
+    96,
+    97,
+    98,
+    88,
+    78,
+    68,
+    58,
+    48,
+    38,
+    28,
+    18,
+    17,
+    16,
+    15,
+    14,
+    13,
+    23,
+    33,
+    43,
+    53,
+    63,
+    73,
+    83,
+  ],
+  "enemigo2": [
+    11,
+    21,
+    31,
+    41,
+    51,
+    61,
+    71,
+    72,
+    73,
+    74,
+    75,
+    76,
+    66,
+    56,
+    46,
+    36,
+    26,
+    16,
+    15,
+    14,
+    13,
+    12,
+  ],
+  "meta": 65
+};
 
 //25
 

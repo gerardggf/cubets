@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:platjoc/bloc/infonivel_event.dart';
+import 'package:platjoc/const.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../screens/home.dart';
@@ -31,7 +32,9 @@ class InfoNivelBloc extends Bloc<InfoNivelEvent, int> {
 
   void _reiniciarUno(InfoNivelEvent event, Emitter<int> emit) async {
     final prefs = await SharedPreferences.getInstance();
-    const uNivel = 1;
+    //=============================================================
+    const uNivel = maxNivelAlcanzado;
+    //=============================================================
     emit(uNivel);
     prefs.setInt('nivel', uNivel);
   }

@@ -15,6 +15,7 @@ import 'package:platjoc/screens/seleccionarnivel.dart';
 import '../const.dart';
 import '../models.dart';
 import '../objetos/pixel.dart';
+import 'finjuego.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -24,10 +25,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 bool isJuegoStart = false;
-
 int nivelLActual = 1;
-
-bool cuadriculaNums = true;
 
 //main class--------------------------------------------------------------
 class _HomeScreenState extends State<HomeScreen> {
@@ -65,15 +63,7 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
   }
 
-  void calcPuntuacion() {
-    var prueba = context.read<InfoMuertesBloc>().state;
-    print(prueba);
-    final monedasSum = monedasR * nivelLActual * 10;
-  }
-
   void initJuego() {
-    calcPuntuacion();
-
     //movimiento enemigo
     Timer.periodic(const Duration(milliseconds: eTime), (timer) {
       //estado enemigo
@@ -142,11 +132,7 @@ class _HomeScreenState extends State<HomeScreen> {
             accionxPos(jugador + numFilas);
           }
       }
-
-      derrotado();
-      if (jugador == nivel.meta) {
-        alLlegarMeta();
-      }
+      alLlegarMeta();
     }
   }
 
@@ -161,13 +147,13 @@ class _HomeScreenState extends State<HomeScreen> {
       context.read<InfoMuertesBloc>().add(MasUno());
       loadNivel();
     }
-    if (context.read<InfoMuertesBloc>().state >= maxDerrotas) {
+    if (context.read<InfoMuertesBloc>().state >= vidas) {
       reiniciarNiveles();
     }
   }
 
   void alLlegarMeta() {
-    if (monedasR == 4) {
+    if (monedasR == 4 && jugador == nivel.meta) {
       sonidosPlay("audio/siguienteNivel.wav");
       resetMonedas();
 
@@ -178,12 +164,17 @@ class _HomeScreenState extends State<HomeScreen> {
       monedasR = 0;
       context.read<InfoNivelBloc>().add(Actualizar());
     }
+    if (nivelLActual == totalNivelesD) {
+      isJuegoStart = false;
+      Navigator.push(context,
+          MaterialPageRoute(builder: (context) => const FinJuegoScreen()));
+    }
   }
 
   //acciones que se van a realizar para cada movimiento
   void accionxPos(aPos) {
     if (nivel.monedas.contains(aPos)) {
-      sonidosPlay("audio/cogerMoneda.wav");
+      sonidosPlay("audio/cogerMoneda.mp3");
       monedasR++;
       antiMonedas.add(aPos);
       nivel.monedas.remove(aPos);
@@ -265,11 +256,9 @@ class _HomeScreenState extends State<HomeScreen> {
                             details.globalPosition.dy) {
                       accionxPos(jugador - 1);
                     }
-                    derrotado();
 
-                    if (jugador == nivel.meta) {
-                      alLlegarMeta();
-                    }
+                    derrotado();
+                    alLlegarMeta();
                   }
                 },
 
@@ -559,7 +548,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         width: 3,
                       ),
                       Text(
-                        "${maxDerrotas - muertes}",
+                        "${vidas - muertes}",
                         style: const TextStyle(
                             color: Colors.white, fontSize: kFSize - 2),
                       ),
@@ -590,7 +579,7 @@ class _HomeScreenState extends State<HomeScreen> {
         builder: (BuildContext context) => AlertDialog(
               title: const Text('Reiniciar todos los niveles'),
               content: const Text(
-                  '¿Seguro que quieres reiniciar todos los niveles?'),
+                  '¿Seguro que quieres reiniciar todos los niveles? Se va a borrar todos los niveles ya completados y se te reiniciaran las vidas.'),
               actions: <Widget>[
                 TextButton(
                   onPressed: () => Navigator.pop(context, 'Cancel'),
