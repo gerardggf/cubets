@@ -14,67 +14,89 @@ class SeleccionarNivel extends StatefulWidget {
   State<SeleccionarNivel> createState() => _SeleccionarNivelState();
 }
 
-class _SeleccionarNivelState extends State<SeleccionarNivel> {
-  var colorNivel = Colors.white;
+var colorNivel = Colors.white;
 
+class _SeleccionarNivelState extends State<SeleccionarNivel> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          backgroundColor: kColor,
           title: const Text(
             "Niveles",
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
         ),
         body: BlocBuilder<InfoNivelBloc, int>(
-            builder: (context, uNivel) => ListView.builder(
-                itemCount: uNivel + 1,
-                itemBuilder: (BuildContext context, int index) {
-                  if (index > 0 && index <= 4) {
-                    colorNivel = Colors.yellow;
-                  } else if (index >= 5 && index <= 9) {
-                    colorNivel = Colors.lightGreen;
-                  } else if (index >= 10 && index <= 14) {
-                    colorNivel = Colors.lightBlue;
-                  } else if (index >= 15 && index <= 19) {
-                    colorNivel = Colors.orange;
-                  } else if (index >= 20 && index <= 24) {
-                    colorNivel = Colors.redAccent;
-                  } else if (index >= 25 && index <= 29) {
-                    colorNivel = Colors.purple;
-                  } else if (index >= 30 && index <= 40) {
-                    colorNivel = Colors.black;
-                  } else {
-                    colorNivel = Colors.white;
-                  }
-                  return Ink(
-                    padding: const EdgeInsets.only(
-                        top: kPadding, bottom: kPadding, left: kPadding + 10),
-                    color: colorNivel,
-                    child: ListTile(
-                      title: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          if (index == 0) const Text("Tutorial"),
-                          if (index != 0) Text("Nivel $index")
-                        ],
-                      ),
-                      onTap: () {
-                        nivelLActual = index;
-                        isJuegoStart = false;
-                        setState(() {
-                          nivelLActual;
+            builder: (context, uNivel) => GridView.builder(
+                  itemCount: uNivel + 1,
+                  itemBuilder: (BuildContext context, int index) {
+                    if (index > 0 && index <= 4) {
+                      colorNivel = Colors.yellow;
+                    } else if (index >= 5 && index <= 9) {
+                      colorNivel = Colors.lightGreen;
+                    } else if (index >= 10 && index <= 14) {
+                      colorNivel = Colors.lightBlue;
+                    } else if (index >= 15 && index <= 19) {
+                      colorNivel = Colors.orange;
+                    } else if (index >= 20 && index <= 24) {
+                      colorNivel = Colors.redAccent;
+                    } else if (index >= 25 && index <= 29) {
+                      colorNivel = Colors.purple;
+                    } else if (index >= 30 && index <= 40) {
+                      colorNivel = Colors.black;
+                    } else {
+                      colorNivel = Colors.white;
+                    }
+                    return GestureDetector(
+                        child: Container(
+                          decoration: BoxDecoration(
+                              color: colorNivel,
+                              borderRadius: BorderRadius.circular(10)),
+                          padding: const EdgeInsets.only(
+                              top: kPadding, bottom: kPadding, left: kPadding),
+                          child: GridTile(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                const Text("Nivel"),
+                                if (index == 0)
+                                  const Text(
+                                    "Tutorial",
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.bold),
+                                  ),
+                                if (index != 0)
+                                  Text(
+                                    index.toString(),
+                                    style: const TextStyle(
+                                        fontSize: kFSize + 12,
+                                        fontWeight: FontWeight.bold),
+                                  )
+                              ],
+                            ),
+                          ),
+                        ),
+                        onTap: () {
+                          nivelLActual = index;
+                          isJuegoStart = false;
+                          setState(() {
+                            nivelLActual;
+                          });
+                          Navigator.of(context).pop();
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const HomeScreen()));
                         });
-                        Navigator.of(context).pop();
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const HomeScreen()));
-                      },
-                    ),
-                  );
-                })));
+                  },
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 4,
+                    crossAxisSpacing: 3,
+                    mainAxisSpacing: 3,
+                  ),
+                )));
   }
 }
 

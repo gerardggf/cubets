@@ -32,9 +32,7 @@ class InfoNivelBloc extends Bloc<InfoNivelEvent, int> {
 
   void _reiniciarUno(InfoNivelEvent event, Emitter<int> emit) async {
     final prefs = await SharedPreferences.getInstance();
-    //=============================================================
     const uNivel = maxNivelAlcanzado;
-    //=============================================================
     emit(uNivel);
     prefs.setInt('nivel', uNivel);
   }

@@ -12,25 +12,46 @@ class FinJuegoScreen extends StatefulWidget {
   State<FinJuegoScreen> createState() => _FinJuegoScreenState();
 }
 
-int totalNivelesD = arrayNiveles.length;
+int totalNivelesD = arrayNiveles.length - 1;
 
 class _FinJuegoScreenState extends State<FinJuegoScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          backgroundColor: kColor,
           title: const Text(
-            "Niveles",
+            "Cubets",
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
         ),
         body: Padding(
           padding: const EdgeInsets.all(30),
-          child: Center(
-            child: Text(
-              "Felicidades, has superado los $totalNivelesD niveles habiendo muerto ${context.read<InfoMuertesBloc>().state} veces de las $vidas.",
-              style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-            ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Text(
+                "¡Felicidades!",
+                style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Text(
+                "Fin del juego. Has superado los $totalNivelesD niveles habiendo muerto un total de ${context.read<InfoMuertesBloc>().state} veces.",
+                style:
+                    const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Image.asset(
+                "assets/img/icono_cubets.png",
+                width: 100,
+                height: 100,
+              ),
+            ],
           ),
         ));
   }

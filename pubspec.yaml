@@ -81,10 +81,13 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/img/app_logo.png
-    - assets/img/icono_vidas.png
+    - assets/img/icono_cubets.png
+    - assets/img/instruc_cubets.png
+    - assets/img/barra_cubets.png
     - assets/audio/cogerMoneda.mp3
     - assets/audio/derrotado.wav
     - assets/audio/siguienteNivel.wav
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

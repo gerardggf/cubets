@@ -10,6 +10,8 @@ import 'package:platjoc/objetos/enemigo.dart';
 import 'package:platjoc/objetos/jugador.dart';
 import 'package:platjoc/objetos/meta.dart';
 import 'package:platjoc/objetos/moneda.dart';
+import 'package:platjoc/screens/gameover.dart';
+import 'package:platjoc/screens/instrucciones.dart';
 import 'package:platjoc/screens/seleccionarnivel.dart';
 
 import '../const.dart';
@@ -25,7 +27,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 bool isJuegoStart = false;
-int nivelLActual = 1;
+var nivelLActual = 1;
 
 //main class--------------------------------------------------------------
 class _HomeScreenState extends State<HomeScreen> {
@@ -37,6 +39,23 @@ class _HomeScreenState extends State<HomeScreen> {
     super.dispose();
   }
 
+  //---------------------------------------------------------
+
+  var puntuacion = 0;
+
+  void calcPuntuacion() {
+    puntuacion = (puntuacion +
+            nivelLActual +
+            ((nivelLActual * (vidas - context.read<InfoMuertesBloc>().state))) /
+                2)
+        .round();
+    print("Puntuación: $puntuacion");
+    setState(() {
+      puntuacion;
+    });
+  }
+  //---------------------------------------------------------
+
   void sonidosPlay(url) async {
     await audioPlayer.play(AssetSource(url));
   }
@@ -44,7 +63,6 @@ class _HomeScreenState extends State<HomeScreen> {
   int numPixeles = numFilas * numColumnas;
   int jugador = noPos;
   int monedasR = 0;
-  int puntuacion = 0;
   int posEnemigo = noPos;
   int posEnemigo2 = noPos;
 
@@ -148,6 +166,8 @@ class _HomeScreenState extends State<HomeScreen> {
       loadNivel();
     }
     if (context.read<InfoMuertesBloc>().state >= vidas) {
+      Navigator.push(context,
+          MaterialPageRoute(builder: (context) => const GameOverScreen()));
       reiniciarNiveles();
     }
   }
@@ -163,8 +183,9 @@ class _HomeScreenState extends State<HomeScreen> {
       //resetear monedas
       monedasR = 0;
       context.read<InfoNivelBloc>().add(Actualizar());
+      calcPuntuacion();
     }
-    if (nivelLActual == totalNivelesD) {
+    if (nivelLActual == (totalNivelesD + 1)) {
       isJuegoStart = false;
       Navigator.push(context,
           MaterialPageRoute(builder: (context) => const FinJuegoScreen()));
@@ -285,11 +306,11 @@ class _HomeScreenState extends State<HomeScreen> {
 
                           //pintar píxeles
                           if (jugador == index) {
-                            return (Jugador(
+                            return Jugador(
                                 vColor: Colors.orange,
                                 vChild: Text(indexString,
                                     style:
-                                        const TextStyle(color: Colors.white))));
+                                        const TextStyle(color: Colors.white)));
                           } else if (posEnemigo == index ||
                               posEnemigo2 == index) {
                             return Enemigo(
@@ -297,30 +318,39 @@ class _HomeScreenState extends State<HomeScreen> {
                                 vChild: Text(indexString,
                                     style:
                                         const TextStyle(color: Colors.white)));
+                          } else if (nivel.barreras.contains(index) &&
+                                  nivel.enemigo.contains(index) ||
+                              nivel.barreras.contains(index) &&
+                                  nivel.enemigo2.contains(index)) {
+                            return Pixel(
+                                vColor: kColor.withOpacity(0.5),
+                                vChild: Text(indexString,
+                                    style: const TextStyle(
+                                        color: Colors.white, fontSize: 10)));
                           } else if (nivel.barreras.contains(index)) {
                             return Pixel(
-                                vColor: Colors.blue,
+                                vColor: kColor,
                                 vChild: Text(indexString,
-                                    style:
-                                        const TextStyle(color: Colors.white)));
+                                    style: const TextStyle(
+                                        color: Colors.white, fontSize: 10)));
                           } else if (nivel.monedas.contains(index)) {
                             return Moneda(
                                 vColor: Colors.yellow,
                                 vChild: Text(indexString,
-                                    style:
-                                        const TextStyle(color: Colors.white)));
+                                    style: const TextStyle(
+                                        color: Colors.white, fontSize: 10)));
                           } else if (nivel.meta == index) {
                             return Meta(
                                 vColor: Colors.white,
                                 vChild: Text(indexString,
-                                    style:
-                                        const TextStyle(color: Colors.white)));
+                                    style: const TextStyle(
+                                        color: Colors.white, fontSize: 10)));
                           } else {
                             return (Pixel(
                                 vColor: kBackgroundColor,
                                 vChild: Text(indexString,
-                                    style:
-                                        const TextStyle(color: Colors.white))));
+                                    style: const TextStyle(
+                                        color: Colors.white, fontSize: 10))));
                           }
                         },
                         gridDelegate:
@@ -329,7 +359,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       )
                     //si el juego está parado:
                     : Container(
-                        color: Colors.blue,
+                        color: kColor,
                         width: anchuraCanvas,
                         height: alturaCanvas + 50,
                         child: Column(
@@ -382,6 +412,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         children: [
                           //botón arriba
                           ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                                backgroundColor: kColor),
                             onPressed: () {
                               startJuego(0);
                             },
@@ -399,6 +431,8 @@ class _HomeScreenState extends State<HomeScreen> {
                             children: [
                               //botón izquierda
                               ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                    backgroundColor: kColor),
                                 onPressed: () {
                                   startJuego(1);
                                 },
@@ -412,6 +446,8 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                               //botón derecha
                               ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                    backgroundColor: kColor),
                                 onPressed: () {
                                   startJuego(2);
                                 },
@@ -427,6 +463,8 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                           //botón abajo
                           ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                                backgroundColor: kColor),
                             onPressed: () {
                               startJuego(3);
                             },
@@ -466,6 +504,20 @@ class _HomeScreenState extends State<HomeScreen> {
                                                 const SeleccionarNivel()));
                                   },
                                 ),
+                                IconButton(
+                                  icon: const Icon(
+                                    Icons.info_outline_rounded,
+                                    color: Colors.white,
+                                    size: kFSize + 10,
+                                  ),
+                                  onPressed: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                const InstruccionesScreen()));
+                                  },
+                                ),
                                 PopupMenuButton(
                                   icon: const Icon(
                                     Icons.more_horiz_rounded,
@@ -499,9 +551,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   ],
                 ),
               ),
-              //información partidaFlexible(
+              //información partida
               Container(
-                  color: Colors.blue,
+                  color: kColor,
                   alignment: Alignment.center,
                   padding: const EdgeInsets.all(kPaddingText / 2),
                   child: Row(
@@ -540,7 +592,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         width: 20,
                       ),
                       Image.asset(
-                        "assets/img/icono_vidas.png",
+                        "assets/img/icono_cubets.png",
                         width: kFSize,
                         height: kFSize,
                       ),
@@ -549,6 +601,22 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       Text(
                         "${vidas - muertes}",
+                        style: const TextStyle(
+                            color: Colors.white, fontSize: kFSize - 2),
+                      ),
+                      const SizedBox(
+                        width: 20,
+                      ),
+                      const Icon(
+                        Icons.point_of_sale,
+                        color: Colors.white,
+                        size: 15,
+                      ),
+                      const SizedBox(
+                        width: 3,
+                      ),
+                      Text(
+                        "$puntuacion",
                         style: const TextStyle(
                             color: Colors.white, fontSize: kFSize - 2),
                       ),
