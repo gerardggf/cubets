@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:platjoc/bloc/infomuertes_bloc.dart';
 import 'package:platjoc/bloc/infonivel_bloc.dart';
+import 'package:platjoc/bloc/puntuacion_bloc.dart';
 import 'package:platjoc/screens/home.dart';
 
 void main() {
@@ -20,6 +21,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (_) => InfoNivelBloc(),
+        ),
+        BlocProvider(
+          create: (_) => InfoPuntuacionBloc(),
         ),
       ],
       child: MaterialApp(

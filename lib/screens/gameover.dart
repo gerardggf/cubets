@@ -8,6 +8,8 @@ class GameOverScreen extends StatefulWidget {
   State<GameOverScreen> createState() => _GameOverScreenState();
 }
 
+var fPuntuacion = 0;
+
 class _GameOverScreenState extends State<GameOverScreen> {
   @override
   Widget build(BuildContext context) {
@@ -33,7 +35,7 @@ class _GameOverScreenState extends State<GameOverScreen> {
                 height: 20,
               ),
               const Text(
-                "Fin del juego. Has agotado todas las vidas.",
+                "Fin del juego. Has agotado todas tus vidas.",
                 style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
               ),
               const SizedBox(
@@ -75,6 +77,18 @@ class _GameOverScreenState extends State<GameOverScreen> {
                     "Reiniciar juego",
                     style: TextStyle(fontSize: kFSize),
                   )),
+              const SizedBox(
+                height: 50,
+              ),
+              const Text(
+                "Puntuación:",
+                style: TextStyle(fontSize: 25),
+              ),
+              Text(
+                fPuntuacion.toString(),
+                style: const TextStyle(
+                    fontSize: 50, fontWeight: FontWeight.bold, color: kColor),
+              ),
             ],
           ),
         ));

@@ -17,6 +17,8 @@ class SeleccionarNivel extends StatefulWidget {
 var colorNivel = Colors.white;
 
 class _SeleccionarNivelState extends State<SeleccionarNivel> {
+  double gridPadding = 5;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,73 +30,86 @@ class _SeleccionarNivelState extends State<SeleccionarNivel> {
           ),
         ),
         body: BlocBuilder<InfoNivelBloc, int>(
-            builder: (context, uNivel) => GridView.builder(
-                  itemCount: uNivel + 1,
-                  itemBuilder: (BuildContext context, int index) {
-                    if (index > 0 && index <= 4) {
-                      colorNivel = Colors.yellow;
-                    } else if (index >= 5 && index <= 9) {
-                      colorNivel = Colors.lightGreen;
-                    } else if (index >= 10 && index <= 14) {
-                      colorNivel = Colors.lightBlue;
-                    } else if (index >= 15 && index <= 19) {
-                      colorNivel = Colors.orange;
-                    } else if (index >= 20 && index <= 24) {
-                      colorNivel = Colors.redAccent;
-                    } else if (index >= 25 && index <= 29) {
-                      colorNivel = Colors.purple;
-                    } else if (index >= 30 && index <= 40) {
-                      colorNivel = Colors.black;
-                    } else {
-                      colorNivel = Colors.white;
-                    }
-                    return GestureDetector(
-                        child: Container(
-                          decoration: BoxDecoration(
-                              color: colorNivel,
-                              borderRadius: BorderRadius.circular(10)),
-                          padding: const EdgeInsets.only(
-                              top: kPadding, bottom: kPadding, left: kPadding),
-                          child: GridTile(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                const Text("Nivel"),
-                                if (index == 0)
-                                  const Text(
-                                    "Tutorial",
-                                    style:
-                                        TextStyle(fontWeight: FontWeight.bold),
-                                  ),
-                                if (index != 0)
-                                  Text(
-                                    index.toString(),
-                                    style: const TextStyle(
-                                        fontSize: kFSize + 12,
-                                        fontWeight: FontWeight.bold),
-                                  )
-                              ],
+            builder: (context, uNivel) => Padding(
+                  padding: EdgeInsets.all(gridPadding),
+                  child: GridView.builder(
+                    itemCount: uNivel + 1,
+                    itemBuilder: (BuildContext context, int index) {
+                      if (index > 0 && index <= 4) {
+                        colorNivel = kColor.withOpacity(0.2);
+                      } else if (index >= 5 && index <= 9) {
+                        colorNivel = kColor.withOpacity(0.35);
+                      } else if (index >= 10 && index <= 14) {
+                        colorNivel = kColor.withOpacity(0.5);
+                      } else if (index >= 15 && index <= 19) {
+                        colorNivel = kColor.withOpacity(0.65);
+                      } else if (index >= 20 && index <= 24) {
+                        colorNivel = kColor.withOpacity(0.8);
+                      } else if (index >= 25 && index <= 29) {
+                        colorNivel = kColor.withOpacity(0.9);
+                      } else if (index >= 30 && index <= 40) {
+                        colorNivel = kColor.withOpacity(1);
+                      } else {
+                        colorNivel = Colors.white;
+                      }
+                      return GestureDetector(
+                          child: Container(
+                            decoration: index == nivelLActual
+                                ? BoxDecoration(
+                                    color: colorNivel,
+                                    border: Border.all(
+                                        width: 4.0, color: Colors.amberAccent),
+                                    borderRadius: BorderRadius.circular(10))
+                                : BoxDecoration(
+                                    color: colorNivel,
+                                    borderRadius: BorderRadius.circular(10)),
+                            padding: const EdgeInsets.only(
+                                top: kPadding,
+                                bottom: kPadding,
+                                left: kPadding),
+                            child: GridTile(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  const Text("Nivel",
+                                      style: TextStyle(fontSize: kFSize)),
+                                  if (index == 0)
+                                    const Text(
+                                      "Tutorial",
+                                      style: TextStyle(
+                                          fontSize: kFSize,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  if (index != 0)
+                                    Text(
+                                      index.toString(),
+                                      style: const TextStyle(
+                                          fontSize: kFSize + 20,
+                                          fontWeight: FontWeight.bold),
+                                    )
+                                ],
+                              ),
                             ),
                           ),
-                        ),
-                        onTap: () {
-                          nivelLActual = index;
-                          isJuegoStart = false;
-                          setState(() {
-                            nivelLActual;
+                          onTap: () {
+                            nivelLActual = index;
+                            isJuegoStart = false;
+                            setState(() {
+                              nivelLActual;
+                            });
+                            Navigator.of(context).pop();
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const HomeScreen()));
                           });
-                          Navigator.of(context).pop();
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const HomeScreen()));
-                        });
-                  },
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 4,
-                    crossAxisSpacing: 3,
-                    mainAxisSpacing: 3,
+                    },
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 3,
+                      crossAxisSpacing: gridPadding,
+                      mainAxisSpacing: gridPadding,
+                    ),
                   ),
                 )));
   }
@@ -105,10 +120,12 @@ List<Map<String, dynamic>> arrayNiveles = [
   d00i000,
   d01i001,
   d01i002,
+  d01i025,
   d01i003,
+  d02i005,
+  d02i026,
   d02i004,
   d03i023,
-  d03i005,
   d03i006,
   d04i007,
   d04i008,
@@ -119,6 +136,7 @@ List<Map<String, dynamic>> arrayNiveles = [
   d06i013,
   d06i014,
   d06i015,
+  d09i024,
   d06i021,
   d07i016,
   d07i020,
@@ -126,7 +144,7 @@ List<Map<String, dynamic>> arrayNiveles = [
   d07i018,
   d08i019,
   d09i022,
-  d09i024
+  //orden real hasta aquí
 ];
 //===========================================================================================================
 
@@ -156,8 +174,8 @@ mappearNiveles() {
   final nivelF22 = arrayNiveles[22];
   final nivelF23 = arrayNiveles[23];
   final nivelF24 = arrayNiveles[24];
-  final nivelF25 = arrayNiveles[0];
-  final nivelF26 = arrayNiveles[0];
+  final nivelF25 = arrayNiveles[25];
+  final nivelF26 = arrayNiveles[26];
   final nivelF27 = arrayNiveles[0];
   final nivelF28 = arrayNiveles[0];
   final nivelF29 = arrayNiveles[0];
@@ -172,6 +190,9 @@ mappearNiveles() {
   final nivelF38 = arrayNiveles[0];
   final nivelF39 = arrayNiveles[0];
   final nivelF40 = arrayNiveles[0];
+
+  // ignore: avoid_print
+  print("Niveles: ${arrayNiveles.length - 1}");
 
   switch (nivelLActual) {
     case 0:

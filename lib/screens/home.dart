@@ -6,12 +6,14 @@ import 'package:platjoc/bloc/infomuertes_bloc.dart';
 import 'package:platjoc/bloc/infomuertes_event.dart';
 import 'package:platjoc/bloc/infonivel_bloc.dart';
 import 'package:platjoc/bloc/infonivel_event.dart';
+import 'package:platjoc/bloc/puntuacion_bloc.dart';
+import 'package:platjoc/bloc/puntuacion_event.dart';
 import 'package:platjoc/objetos/enemigo.dart';
 import 'package:platjoc/objetos/jugador.dart';
 import 'package:platjoc/objetos/meta.dart';
 import 'package:platjoc/objetos/moneda.dart';
 import 'package:platjoc/screens/gameover.dart';
-import 'package:platjoc/screens/instrucciones.dart';
+import 'package:platjoc/screens/informacion.dart';
 import 'package:platjoc/screens/seleccionarnivel.dart';
 
 import '../const.dart';
@@ -39,25 +41,11 @@ class _HomeScreenState extends State<HomeScreen> {
     super.dispose();
   }
 
-  //---------------------------------------------------------
-
-  var puntuacion = 0;
-
-  void calcPuntuacion() {
-    puntuacion = (puntuacion +
-            nivelLActual +
-            ((nivelLActual * (vidas - context.read<InfoMuertesBloc>().state))) /
-                2)
-        .round();
-    print("Puntuación: $puntuacion");
-    setState(() {
-      puntuacion;
-    });
-  }
-  //---------------------------------------------------------
-
   void sonidosPlay(url) async {
     await audioPlayer.play(AssetSource(url));
+    Timer(const Duration(milliseconds: 800), () {
+      audioPlayer.pause();
+    });
   }
 
   int numPixeles = numFilas * numColumnas;
@@ -78,6 +66,7 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     context.read<InfoNivelBloc>().add(Actualizar());
     context.read<InfoNivelBloc>().state;
+    context.read<InfoPuntuacionBloc>().state;
     super.initState();
   }
 
@@ -174,21 +163,23 @@ class _HomeScreenState extends State<HomeScreen> {
 
   void alLlegarMeta() {
     if (monedasR == 4 && jugador == nivel.meta) {
-      sonidosPlay("audio/siguienteNivel.wav");
-      resetMonedas();
+      if (nivelLActual == (totalNivelesD)) {
+        context.read<InfoPuntuacionBloc>().add(Sumar());
+        isJuegoStart = false;
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => const FinJuegoScreen()));
+      } else {
+        sonidosPlay("audio/siguienteNivel.wav");
+        resetMonedas();
 
-      nivelLActual++;
-      //cargar siguiente nivel
-      loadNivel();
-      //resetear monedas
-      monedasR = 0;
-      context.read<InfoNivelBloc>().add(Actualizar());
-      calcPuntuacion();
-    }
-    if (nivelLActual == (totalNivelesD + 1)) {
-      isJuegoStart = false;
-      Navigator.push(context,
-          MaterialPageRoute(builder: (context) => const FinJuegoScreen()));
+        nivelLActual++;
+        //cargar siguiente nivel
+        loadNivel();
+        //resetear monedas
+        monedasR = 0;
+        context.read<InfoNivelBloc>().add(Actualizar());
+        context.read<InfoPuntuacionBloc>().add(Sumar());
+      }
     }
   }
 
@@ -515,7 +506,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         context,
                                         MaterialPageRoute(
                                             builder: (context) =>
-                                                const InstruccionesScreen()));
+                                                const InformacionScreen()));
                                   },
                                 ),
                                 PopupMenuButton(
@@ -616,7 +607,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         width: 3,
                       ),
                       Text(
-                        "$puntuacion",
+                        context.read<InfoPuntuacionBloc>().state.toString(),
                         style: const TextStyle(
                             color: Colors.white, fontSize: kFSize - 2),
                       ),
@@ -633,7 +624,8 @@ class _HomeScreenState extends State<HomeScreen> {
     setState(() {
       nivelLActual = 1;
       context.read<InfoNivelBloc>().add(ReiniciarUno());
-      context.read<InfoMuertesBloc>().add(Reiniciar());
+      context.read<InfoMuertesBloc>().add(ReiniciarMuertes());
+      context.read<InfoPuntuacionBloc>().add(ReiniciarPuntuacion());
     });
     resetMonedas();
     monedasR = 0;

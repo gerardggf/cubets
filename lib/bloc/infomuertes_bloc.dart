@@ -7,7 +7,7 @@ class InfoMuertesBloc extends Bloc<InfoMuertesEvent, int> {
   InfoMuertesBloc() : super(0) {
     _getMuertes();
     on<MasUno>(_masUno);
-    on<Reiniciar>(_reiniciar);
+    on<ReiniciarMuertes>(_reiniciar);
   }
 
   void _getMuertes() async {

@@ -4,6 +4,7 @@ import 'package:platjoc/screens/seleccionarnivel.dart';
 
 import '../bloc/infomuertes_bloc.dart';
 import '../const.dart';
+import 'gameover.dart';
 
 class FinJuegoScreen extends StatefulWidget {
   const FinJuegoScreen({super.key});
@@ -50,6 +51,18 @@ class _FinJuegoScreenState extends State<FinJuegoScreen> {
                 "assets/img/icono_cubets.png",
                 width: 100,
                 height: 100,
+              ),
+              const SizedBox(
+                height: 50,
+              ),
+              const Text(
+                "Puntuación:",
+                style: TextStyle(fontSize: 25),
+              ),
+              Text(
+                fPuntuacion.toString(),
+                style: const TextStyle(
+                    fontSize: 50, fontWeight: FontWeight.bold, color: kColor),
               ),
             ],
           ),
