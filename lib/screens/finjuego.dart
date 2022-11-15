@@ -13,7 +13,7 @@ class FinJuegoScreen extends StatefulWidget {
   State<FinJuegoScreen> createState() => _FinJuegoScreenState();
 }
 
-int totalNivelesD = arrayNiveles.length - 1;
+int totalNivelesD = arrayNiveles.length - 2;
 
 class _FinJuegoScreenState extends State<FinJuegoScreen> {
   @override

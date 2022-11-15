@@ -22,11 +22,16 @@ class InfoPuntuacionBloc extends Bloc<InfoPuntuacionEvent, int> {
   void _sumar(InfoPuntuacionEvent event, Emitter<int> emit) async {
     final prefs = await SharedPreferences.getInstance();
     final nPuntuacion = (prefs.getInt('puntuacion') ?? 0);
-    fPuntuacion = (nPuntuacion +
-            nivelLActual +
-            ((nivelLActual * (vidas - prefs.getInt('muertes')!.toInt()))) / 2)
-        .round();
-
+    final spMuertes = prefs.getInt('muertes') ?? 0;
+    var uNivel = prefs.getInt('nivel') ?? 0;
+    if (uNivel == nivelLActual - 1) {
+      fPuntuacion = (nPuntuacion +
+              nivelLActual +
+              ((nivelLActual * (vidas - spMuertes.toInt()))) / 2)
+          .round();
+    } else {
+      fPuntuacion = nPuntuacion;
+    }
     emit(fPuntuacion);
     prefs.setInt('puntuacion', fPuntuacion);
   }

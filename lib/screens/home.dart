@@ -48,6 +48,9 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
+  static const double widthBtn = 95;
+  static const double heightBtn = 60;
+
   int numPixeles = numFilas * numColumnas;
   int jugador = noPos;
   int monedasR = 0;
@@ -166,11 +169,13 @@ class _HomeScreenState extends State<HomeScreen> {
       if (nivelLActual == (totalNivelesD)) {
         context.read<InfoPuntuacionBloc>().add(Sumar());
         isJuegoStart = false;
+        nivelLActual++;
         Navigator.push(context,
             MaterialPageRoute(builder: (context) => const FinJuegoScreen()));
       } else {
         sonidosPlay("audio/siguienteNivel.wav");
         resetMonedas();
+        context.read<InfoPuntuacionBloc>().add(Sumar());
 
         nivelLActual++;
         //cargar siguiente nivel
@@ -178,7 +183,6 @@ class _HomeScreenState extends State<HomeScreen> {
         //resetear monedas
         monedasR = 0;
         context.read<InfoNivelBloc>().add(Actualizar());
-        context.read<InfoPuntuacionBloc>().add(Sumar());
       }
     }
   }
@@ -274,7 +278,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   }
                 },
 
-                //ZONA DE JUEGO=============================================================================================================================
+                //ZONA DE JUEGO================
                 child: isJuegoStart
                     ? GridView.builder(
                         physics: const NeverScrollableScrollPhysics(),
@@ -373,9 +377,17 @@ class _HomeScreenState extends State<HomeScreen> {
                             const SizedBox(
                               height: 30,
                             ),
-                            const Text(
-                              "Pulsa en la pantalla para jugar",
-                              style: TextStyle(color: Colors.white),
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                  left: kPaddingText + 10,
+                                  right: kPaddingText + 10),
+                              child: Text(
+                                nivelLActual == 0
+                                    ? 'Pulsa en la pantalla para jugar. Puedes ver las instrucciones y más información acerca del juego pulsando el icono de la "i" rodeada por un círculo, situado a la derecha de los controles.'
+                                    : 'Pulsa en la pantalla para jugar',
+                                textAlign: TextAlign.center,
+                                style: const TextStyle(color: Colors.white),
+                              ),
                             ),
                           ],
                         ),
@@ -407,72 +419,75 @@ class _HomeScreenState extends State<HomeScreen> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          //botón arriba
-                          ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                                backgroundColor: kColor),
-                            onPressed: () {
-                              startJuego(0);
-                            },
-                            child: const Icon(
-                              Icons.arrow_drop_up,
-                              size: kBtnSize,
+                          GestureDetector(
+                            onTap: () => startJuego(0),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  color: kColor,
+                                  borderRadius: BorderRadius.circular(10)),
+                              width: widthBtn,
+                              height: heightBtn,
+                              child: const Icon(
+                                Icons.arrow_drop_up,
+                                size: kBtnSize,
+                                color: Colors.white,
+                              ),
                             ),
-                          ),
-                          const SizedBox(
-                            height: 5,
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              //botón izquierda
-                              ElevatedButton(
-                                style: ElevatedButton.styleFrom(
-                                    backgroundColor: kColor),
-                                onPressed: () {
-                                  startJuego(1);
-                                },
-                                child: const Icon(
-                                  Icons.arrow_left,
-                                  size: kBtnSize,
+                              GestureDetector(
+                                onTap: () => startJuego(1),
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                      color: kColor,
+                                      borderRadius: BorderRadius.circular(10)),
+                                  width: widthBtn,
+                                  height: heightBtn,
+                                  child: const Icon(
+                                    Icons.arrow_left,
+                                    size: kBtnSize,
+                                    color: Colors.white,
+                                  ),
                                 ),
                               ),
                               const SizedBox(
-                                width: 100,
+                                width: widthBtn + 5,
                               ),
-                              //botón derecha
-                              ElevatedButton(
-                                style: ElevatedButton.styleFrom(
-                                    backgroundColor: kColor),
-                                onPressed: () {
-                                  startJuego(2);
-                                },
-                                child: const Icon(
-                                  Icons.arrow_right,
-                                  size: kBtnSize,
+                              GestureDetector(
+                                onTap: () => startJuego(2),
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                      color: kColor,
+                                      borderRadius: BorderRadius.circular(10)),
+                                  width: widthBtn,
+                                  height: heightBtn,
+                                  child: const Icon(
+                                    Icons.arrow_right,
+                                    size: kBtnSize,
+                                    color: Colors.white,
+                                  ),
                                 ),
-                              )
+                              ),
                             ],
                           ),
-                          const SizedBox(
-                            height: 5,
-                          ),
-                          //botón abajo
-                          ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                                backgroundColor: kColor),
-                            onPressed: () {
-                              startJuego(3);
-                            },
-                            child: const Icon(
-                              Icons.arrow_drop_down,
-                              size: kBtnSize,
+                          GestureDetector(
+                            onTap: () => startJuego(3),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  color: kColor,
+                                  borderRadius: BorderRadius.circular(10)),
+                              width: widthBtn,
+                              height: heightBtn,
+                              child: const Icon(
+                                Icons.arrow_drop_down,
+                                size: kBtnSize,
+                                color: Colors.white,
+                              ),
                             ),
-                          ),
-                          const SizedBox(
-                            height: 5,
-                          ),
+                          )
                         ],
                       ),
                     ),
@@ -548,7 +563,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ],
                 ),
               ),
-              //información partida
+              //información de la partida
               Container(
                   color: kColor,
                   alignment: Alignment.center,

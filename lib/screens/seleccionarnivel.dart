@@ -120,13 +120,14 @@ List<Map<String, dynamic>> arrayNiveles = [
   d00i000,
   d01i001,
   d01i002,
+  d01i027,
+  d01i005,
   d01i025,
   d01i003,
-  d02i005,
   d02i026,
+  d03i006, d03i029,
   d02i004,
-  d03i023,
-  d03i006,
+  d03i023, d03i028,
   d04i007,
   d04i008,
   d04i009,
@@ -144,7 +145,11 @@ List<Map<String, dynamic>> arrayNiveles = [
   d07i018,
   d08i019,
   d09i022,
+
   //orden real hasta aquí
+
+  //final00
+  d00ifinal
 ];
 //===========================================================================================================
 
@@ -176,22 +181,10 @@ mappearNiveles() {
   final nivelF24 = arrayNiveles[24];
   final nivelF25 = arrayNiveles[25];
   final nivelF26 = arrayNiveles[26];
-  final nivelF27 = arrayNiveles[0];
-  final nivelF28 = arrayNiveles[0];
-  final nivelF29 = arrayNiveles[0];
-  final nivelF30 = arrayNiveles[0];
-  final nivelF31 = arrayNiveles[0];
-  final nivelF32 = arrayNiveles[0];
-  final nivelF33 = arrayNiveles[0];
-  final nivelF34 = arrayNiveles[0];
-  final nivelF35 = arrayNiveles[0];
-  final nivelF36 = arrayNiveles[0];
-  final nivelF37 = arrayNiveles[0];
-  final nivelF38 = arrayNiveles[0];
-  final nivelF39 = arrayNiveles[0];
-  final nivelF40 = arrayNiveles[0];
-
-  //print("Nivel max: ${arrayNiveles.length - 1}");
+  final nivelF27 = arrayNiveles[27];
+  final nivelF28 = arrayNiveles[28];
+  final nivelF29 = arrayNiveles[29];
+  final nivelF30 = arrayNiveles[30];
 
   switch (nivelLActual) {
     case 0:
@@ -347,56 +340,6 @@ mappearNiveles() {
     case 30:
       {
         nivelA = nivelF30;
-        break;
-      }
-    case 31:
-      {
-        nivelA = nivelF31;
-        break;
-      }
-    case 32:
-      {
-        nivelA = nivelF32;
-        break;
-      }
-    case 33:
-      {
-        nivelA = nivelF33;
-        break;
-      }
-    case 34:
-      {
-        nivelA = nivelF34;
-        break;
-      }
-    case 35:
-      {
-        nivelA = nivelF35;
-        break;
-      }
-    case 36:
-      {
-        nivelA = nivelF36;
-        break;
-      }
-    case 37:
-      {
-        nivelA = nivelF37;
-        break;
-      }
-    case 38:
-      {
-        nivelA = nivelF38;
-        break;
-      }
-    case 39:
-      {
-        nivelA = nivelF39;
-        break;
-      }
-    case 40:
-      {
-        nivelA = nivelF40;
         break;
       }
   }
