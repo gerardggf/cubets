@@ -26,6 +26,7 @@ class InfoPuntuacionBloc extends Bloc<InfoPuntuacionEvent, int> {
             nivelLActual +
             ((nivelLActual * (vidas - prefs.getInt('muertes')!.toInt()))) / 2)
         .round();
+
     emit(fPuntuacion);
     prefs.setInt('puntuacion', fPuntuacion);
   }

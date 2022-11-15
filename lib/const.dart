@@ -25,4 +25,4 @@ const eTime = 250;
 //activar números posición en cada cuadrícula
 const cuadriculaNums = false;
 //nivel máximo guardado en el almacenamiento local (uNivel). Reinicia todos los niveles para que te aparezcan todos los niveles hasta el indicado
-const maxNivelAlcanzado = 26;
+const maxNivelAlcanzado = 0;

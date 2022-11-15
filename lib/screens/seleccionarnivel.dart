@@ -191,8 +191,7 @@ mappearNiveles() {
   final nivelF39 = arrayNiveles[0];
   final nivelF40 = arrayNiveles[0];
 
-  // ignore: avoid_print
-  print("Niveles: ${arrayNiveles.length - 1}");
+  //print("Nivel max: ${arrayNiveles.length - 1}");
 
   switch (nivelLActual) {
     case 0:

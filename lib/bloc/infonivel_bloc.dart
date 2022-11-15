@@ -22,7 +22,7 @@ class InfoNivelBloc extends Bloc<InfoNivelEvent, int> {
 
   void _actualizar(InfoNivelEvent event, Emitter<int> emit) async {
     final prefs = await SharedPreferences.getInstance();
-    var uNivel = prefs.getInt('nivel') ?? 1;
+    var uNivel = prefs.getInt('nivel') ?? 0;
     if (uNivel <= nivelLActual) {
       await prefs.setInt('nivel', nivelLActual);
       uNivel = nivelLActual;

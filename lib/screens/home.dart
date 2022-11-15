@@ -29,7 +29,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 bool isJuegoStart = false;
-var nivelLActual = 1;
+var nivelLActual = 0;
 
 //main class--------------------------------------------------------------
 class _HomeScreenState extends State<HomeScreen> {
@@ -287,11 +287,17 @@ class _HomeScreenState extends State<HomeScreen> {
 
                           //nivel tutorial
                           if (nivelLActual == 0 && isJuegoStart == true) {
-                            if (index == 15) {
-                              indexString = "Cubi";
+                            if (index == 15 || index == 45) {
+                              indexString = "✖";
                             }
-                            if (index == 45) {
-                              indexString = "Etsi";
+                            if (index == 41 ||
+                                index == 71 ||
+                                index == 103 ||
+                                index == 106) {
+                              indexString = "✔";
+                            }
+                            if (index == 21) {
+                              indexString = "${monedasR.toString()}/4";
                             }
                           }
 
@@ -341,7 +347,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 vColor: kBackgroundColor,
                                 vChild: Text(indexString,
                                     style: const TextStyle(
-                                        color: Colors.white, fontSize: 10))));
+                                        color: Colors.white, fontSize: 14))));
                           }
                         },
                         gridDelegate:
@@ -622,7 +628,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   reiniciarNiveles() {
     setState(() {
-      nivelLActual = 1;
+      nivelLActual = 0;
       context.read<InfoNivelBloc>().add(ReiniciarUno());
       context.read<InfoMuertesBloc>().add(ReiniciarMuertes());
       context.read<InfoPuntuacionBloc>().add(ReiniciarPuntuacion());
@@ -639,7 +645,7 @@ class _HomeScreenState extends State<HomeScreen> {
         builder: (BuildContext context) => AlertDialog(
               title: const Text('Reiniciar todos los niveles'),
               content: const Text(
-                  '¿Seguro que quieres reiniciar todos los niveles? Se va a borrar todos los niveles ya completados y se te reiniciaran las vidas.'),
+                  '¿Seguro que quieres reiniciar todos los niveles? Se va a borrar todos los niveles ya completados. Se te reiniciaran las vidas y la puntuación.'),
               actions: <Widget>[
                 TextButton(
                   onPressed: () => Navigator.pop(context, 'Cancel'),

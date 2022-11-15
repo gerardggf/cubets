@@ -6,6 +6,7 @@ import 'package:platjoc/bloc/puntuacion_bloc.dart';
 import 'package:platjoc/screens/home.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
 
