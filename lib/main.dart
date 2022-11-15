@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:platjoc/bloc/infomuertes_bloc.dart';
 import 'package:platjoc/bloc/infonivel_bloc.dart';
@@ -7,11 +8,14 @@ import 'package:platjoc/screens/home.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(const MyApp());
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
+      .then((_) {
+    runApp(const Cubets());
+  });
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class Cubets extends StatelessWidget {
+  const Cubets({super.key});
 
   @override
   Widget build(BuildContext context) {

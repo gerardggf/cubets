@@ -48,7 +48,7 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
-  static const double widthBtn = 95;
+  static const double widthBtn = 85;
   static const double heightBtn = 60;
 
   int numPixeles = numFilas * numColumnas;

@@ -26,7 +26,7 @@ class InformacionScreen extends StatelessWidget {
                     height: 10,
                   ),
                   const Text(
-                    "Ayuda a Cubets, un cuadrado naranja bastante apático que se ha visto atrapado en un juego para teléfonos móviles. \n\nPara poder escapar tiene que superar todos los niveles de este juego, subiendo de nivel mediante un portal de color blanco.",
+                    "Ayuda a Cubets, un cuadrado naranja bastante apático, que se ha visto atrapado en un juego para teléfonos móviles. \n\nPara poder escapar tiene que superar todos los niveles de este juego, subiendo de nivel mediante un portal de color blanco.",
                     style: TextStyle(fontSize: kFSize - 5),
                   ),
                   const SizedBox(
